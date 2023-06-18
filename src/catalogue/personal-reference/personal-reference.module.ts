@@ -10,6 +10,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forFeature(
       [ PersonalReference])
+  ],
+  exports:[
+    PersonalReferenceService,
+    TypeOrmModule,
   ]
 })
 export class PersonalReferenceModule {}

@@ -9,6 +9,7 @@ export class Aval {
     @Column({
         type:'numeric',
         precision: 8,
+        unique: true,
     })
     dni:number;
     
@@ -54,22 +55,26 @@ export class Aval {
     @Column({
         type:'varchar',
         length:50,
+        nullable: true,
     })
     user_create:string;
 
     @Column({
         type:'varchar',
         length:50,
+        nullable: true,
     })
     user_update:string;
 
     @Column({
         type:'timestamp',
+        nullable: true,
     })
     created_at:string;
 
     @Column({
         type:'timestamp',
+        nullable: true,
     })
     updated_at:string;
  

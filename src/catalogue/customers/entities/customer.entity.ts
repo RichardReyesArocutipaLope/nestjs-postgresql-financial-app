@@ -12,6 +12,7 @@ export class Customer {
     @Column({
         type: 'numeric',
         precision: 8,
+        unique: true,
     })
     dni: number;
 
@@ -54,6 +55,7 @@ export class Customer {
     @Column({
         type: 'varchar',
         length: 100,
+        nullable: true,
     })
     address_reference: string;
 
@@ -90,6 +92,7 @@ export class Customer {
     @Column({
         type: 'varchar',
         length: 300,
+        nullable: true,
     })
     observation: string;
 
@@ -123,24 +126,27 @@ export class Customer {
     @Column({
         type: 'varchar',
         length: 50,
+        nullable: true,
     })
     user_create: string;
 
     @Column({
         type: 'varchar',
         length: 50,
+        nullable: true,
     })
     user_update: string;
 
     @Column({
         type: 'timestamp',
+        nullable: true,
     })
     created_at: string;
 
     @Column({
         type: 'timestamp',
+        nullable: true,
     })
     updated_at: string;
-
 
 }

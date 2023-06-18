@@ -10,6 +10,10 @@ import { Business } from './entities/business.entity';
   imports: [
     TypeOrmModule.forFeature(
       [ Business])
+  ],
+  exports:[
+    BusinessService,
+    TypeOrmModule,
   ]
 })
 export class BusinessModule {}

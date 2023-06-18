@@ -20,6 +20,7 @@ export class Business {
     @Column({
         type:'varchar',
         length:100,
+        nullable: true,
     })
     address_reference:string;
 
@@ -54,19 +55,20 @@ export class Business {
 
     @Column({
         type:'boolean',
-        default: true
+        default: false
     })
     have_property_documents:boolean;
 
     @Column({
         type:'boolean',
-        default: true
+        default: false
     })
     have_vouchers:boolean;
 
     @Column({
         type:'varchar',
         length:200,
+        nullable: true,
     })
     observation:string;
 
@@ -78,22 +80,26 @@ export class Business {
     @Column({
         type:'varchar',
         length:50,
+        nullable: true,
     })
     user_create:string;
 
     @Column({
         type:'varchar',
         length:50,
+        nullable: true,
     })
     user_update:string;
 
     @Column({
         type:'timestamp',
+        nullable: true,
     })
     created_at:string;
 
     @Column({
         type:'timestamp',
+        nullable: true,
     })
     updated_at:string;
 

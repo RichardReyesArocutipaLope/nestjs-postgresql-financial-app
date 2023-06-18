@@ -10,6 +10,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forFeature(
       [ Aval])
+  ],
+  exports:[
+    AvalesService,
+    TypeOrmModule,
   ]
 })
 export class AvalesModule {}

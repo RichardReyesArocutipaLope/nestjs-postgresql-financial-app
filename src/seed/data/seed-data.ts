@@ -15,7 +15,7 @@ interface SeedFinancialInterestRate {
 
 interface SeedEmployees {
     dni:number;
-    firs_name:string;
+    first_name:string;
     last_name:string;
     phone:string;
     phone2:string;
@@ -136,7 +136,7 @@ export const initialData: SeedData = {
     employees: [
         {
             dni:71283340,
-            firs_name:'Richard Reyes',
+            first_name:'Richard Reyes',
             last_name:'Arocutipa Lope',
             phone:'+51925072688',
             phone2:'+51925033688',
@@ -148,7 +148,7 @@ export const initialData: SeedData = {
         },
         {
             dni:71113340,
-            firs_name:'Kheyvin',
+            first_name:'Kheyvin',
             last_name:'Arucutipa Cama',
             phone:'+51 992 517 309',
             phone2:'+51 882 517 309',
@@ -160,7 +160,7 @@ export const initialData: SeedData = {
         },
         {
             dni:71223340,
-            firs_name:'Rolando',
+            first_name:'Rolando',
             last_name:'Gutierrez Cutipa',
             phone:'+51 937 377 599',
             phone2:'+51 887 377 599',
@@ -172,7 +172,7 @@ export const initialData: SeedData = {
         },
         {
             dni:71333340,
-            firs_name:'Victor',
+            first_name:'Victor',
             last_name:'Mireles bernabe',
             phone:'+51 955 014 274',
             phone2:'+51 885 014 274',
