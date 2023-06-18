@@ -1,26 +1,30 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSeedDto } from './dto/create-seed.dto';
-import { UpdateSeedDto } from './dto/update-seed.dto';
+
 
 @Injectable()
 export class SeedService {
-  create(createSeedDto: CreateSeedDto) {
-    return 'This action adds a new seed';
+  async runSeed() {
+    return 'SEED EXECUTED';
   }
 
-  findAll() {
-    return `This action returns all seed`;
+  private async seedInsertPeriodType(){
+
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} seed`;
+  private async seedInsertFinancialInterestRate(){
+    
   }
 
-  update(id: number, updateSeedDto: UpdateSeedDto) {
-    return `This action updates a #${id} seed`;
+  private async seedInsertEmployees(){
+    
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} seed`;
+  private async seedInsertHousingType(){
+    
   }
+
+  private async seedInsertCivilStatus(){
+    
+  }
+
 }
