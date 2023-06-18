@@ -4,6 +4,7 @@ import { FinancialInterestRateModule } from './financial-interest-rate/financial
 import { PeriodTypeModule } from './period-type/period-type.module';
 
 @Module({
-  imports: [CreditModule, FinancialInterestRateModule, PeriodTypeModule]
+  imports: [CreditModule, FinancialInterestRateModule, PeriodTypeModule],
+  exports: [CreditModule, FinancialInterestRateModule, PeriodTypeModule]
 })
-export class CreditsModule {}
+export class CreditsModule { }

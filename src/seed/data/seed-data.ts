@@ -2,11 +2,15 @@
 type ValidPeriodType = 'days' | 'weeks' | 'months' | 'years'
 interface SeedPeriodType {
     name: ValidPeriodType;
+    user_create:string;
+    created_at:string;
 }
 
 type ValidFinancialInterestRate = 'simple' | 'compuesto'
 interface SeedFinancialInterestRate {
     name: ValidFinancialInterestRate;
+    user_create:string;
+    created_at:string;
 }
 
 interface SeedEmployees {
@@ -18,16 +22,22 @@ interface SeedEmployees {
     email:string;
     address:string;
     address_reference:string;
+    user_create:string;
+    created_at:string;
 }
 
 type ValidHousingType='propia'|'alquilada'|'cedida'|'otra';
 interface SeedHousingType {
     name:ValidHousingType
+    user_create:string;
+    created_at:string;
 }
 
 type ValidCivilStatus = 'soltero' | 'casado' | 'viudo' | 'divorciado'
 interface SeedCivilStatus {
     name: ValidCivilStatus;
+    user_create:string;
+    created_at:string;
 }
 
 interface SeedData {
@@ -44,28 +54,85 @@ export const initialData: SeedData = {
 
     periodType: [
         {
-            name: 'days'
+            name: 'days',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
-            name: 'weeks'
+            name: 'weeks',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
-            name: 'months'
+            name: 'months',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
-            name: 'years'
+            name: 'years',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
     ],
 
     financialInterestRate: [
         {
-            name: 'simple'
+            name: 'simple',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
-            name: 'compuesto'
+            name: 'compuesto',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
     ],
 
+    housingType: [
+        {
+            name:'propia',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'alquilada',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'cedida',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'otra',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+    ],
+
+    civilStatus: [
+        {
+            name:'soltero',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'casado',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'viudo',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+        {
+            name:'divorciado',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
+        },
+    ],
     employees: [
         {
             dni:71283340,
@@ -76,6 +143,8 @@ export const initialData: SeedData = {
             email:'richardreyesarocutipalope@gmail.com',
             address:'La perla MZ 7 LT 21',
             address_reference:'atras del local comunal los florales',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
             dni:71113340,
@@ -86,6 +155,8 @@ export const initialData: SeedData = {
             email:'kheyvin@gmail.com',
             address:'unjbg',
             address_reference:'esis',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
             dni:71223340,
@@ -96,6 +167,8 @@ export const initialData: SeedData = {
             email:'rolando@gmail.com',
             address:'unjbg',
             address_reference:'esis',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
         {
             dni:71333340,
@@ -106,36 +179,9 @@ export const initialData: SeedData = {
             email:'victor@gmail.com',
             address:'unjbg',
             address_reference:'esis',
+            user_create:'richard',
+            created_at:'2023-06-19 10:23:54'
         },
     ],
 
-    housingType: [
-        {
-            name:'propia'
-        },
-        {
-            name:'alquilada'
-        },
-        {
-            name:'cedida'
-        },
-        {
-            name:'otra'
-        },
-    ],
-
-    civilStatus: [
-        {
-            name:'soltero'
-        },
-        {
-            name:'casado'
-        },
-        {
-            name:'viudo'
-        },
-        {
-            name:'divorciado'
-        },
-    ]
 }

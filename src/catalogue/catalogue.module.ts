@@ -8,6 +8,7 @@ import { HousingTypeModule } from './housing-type/housing-type.module';
 import { PersonalReferenceModule } from './personal-reference/personal-reference.module';
 
 @Module({
-  imports: [AvalesModule, BusinessModule, CivilStatusModule, CustomersModule, EmployeesModule, HousingTypeModule, PersonalReferenceModule]
+  imports: [AvalesModule, BusinessModule, CivilStatusModule, CustomersModule, EmployeesModule, HousingTypeModule, PersonalReferenceModule],
+  exports: [AvalesModule, BusinessModule, CivilStatusModule, CustomersModule, EmployeesModule, HousingTypeModule, PersonalReferenceModule]
 })
 export class CatalogueModule {}

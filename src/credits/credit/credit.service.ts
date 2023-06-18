@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { CreateCreditDto } from './dto/create-credit.dto';
 import { UpdateCreditDto } from './dto/update-credit.dto';
 import { Repository } from 'typeorm';
@@ -6,6 +6,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Credit } from './entities/credit.entity';
 @Injectable()
 export class CreditService {
+
+  private readonly logger = new Logger('CreditService');
 
   constructor(
     @InjectRepository(Credit)
@@ -41,4 +43,21 @@ export class CreditService {
   remove(id: number) {
     return `This action removes a #${id} credit`;
   }
+
+
+  private handleExceptions(error: any) {
+    if (error.code === '23505') throw new BadRequestException(error.detail)
+    this.logger.error(error)
+    throw new InternalServerErrorException('Unexpected error, check server logs')
+  }
+  
+  async deleteAllCredits() {
+    const query = this.creditRepository.createQueryBuilder('product')
+    try {
+      return await query.delete().where({}).execute();
+    } catch (error) {
+      this.handleExceptions(error)
+    }
+  }
+
 }

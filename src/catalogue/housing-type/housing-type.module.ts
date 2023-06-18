@@ -10,6 +10,10 @@ import { HousingType } from './entities/housing-type.entity';
   imports: [
     TypeOrmModule.forFeature(
       [ HousingType])
+  ],
+  exports:[
+    HousingTypeService,
+    TypeOrmModule,
   ]
 })
 export class HousingTypeModule {}

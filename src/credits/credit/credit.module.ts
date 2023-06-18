@@ -7,12 +7,12 @@ import { Credit } from './entities/credit.entity';
 @Module({
   controllers: [CreditController],
   providers: [CreditService],
-    imports: [
+  imports: [
     TypeOrmModule.forFeature([Credit])
   ],
-  exports:[
+  exports: [
     CreditService,
     TypeOrmModule,
   ]
 })
-export class CreditModule {}
+export class CreditModule { }

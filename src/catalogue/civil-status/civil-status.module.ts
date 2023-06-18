@@ -10,6 +10,10 @@ import { CivilStatus } from './entities/civil-status.entity';
   imports: [
     TypeOrmModule.forFeature(
       [ CivilStatus])
+  ],
+  exports:[
+    CivilStatusService,
+    TypeOrmModule,
   ]
 })
 export class CivilStatusModule {}

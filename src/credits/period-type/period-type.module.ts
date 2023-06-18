@@ -10,6 +10,10 @@ import { PeriodType } from './entities/period-type.entity';
   imports: [
     TypeOrmModule.forFeature(
       [ PeriodType])
+  ],
+  exports:[
+    PeriodTypeService,
+    TypeOrmModule,
   ]
 })
 export class PeriodTypeModule {}
