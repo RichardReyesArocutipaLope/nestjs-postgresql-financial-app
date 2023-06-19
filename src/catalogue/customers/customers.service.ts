@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException, Query } from '@nestjs/common';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -8,6 +8,7 @@ import { Business } from '../business/entities/business.entity';
 import { Credit } from 'src/credits/credit/entities/credit.entity';
 import { Aval } from '../avales/entities/aval.entity';
 import { PersonalReference } from '../personal-reference/entities/personal-reference.entity';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Injectable()
 export class CustomersService {
@@ -68,8 +69,14 @@ export class CustomersService {
   }
 
   // TODO: paginar
-  findAll() {
-    return this.customerRepository.find({})
+  findAll(paginationDto: PaginationDto) {
+
+    const { limit = 10, offset = 0 } = paginationDto
+
+    return this.customerRepository.find({
+      take: limit,
+      skip: offset,
+    })
   }
 
   async findOne(id: number) {
