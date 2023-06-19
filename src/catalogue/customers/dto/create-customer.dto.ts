@@ -1,4 +1,6 @@
 import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { CreateBusinessDto } from "src/catalogue/business/dto/create-business.dto";
+import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 
 export class CreateCustomerDto {
 
@@ -51,6 +53,18 @@ export class CreateCustomerDto {
     @IsString()
     @IsOptional()
     observation?:string;
+
+    @IsOptional()
+    business?: CreateBusinessDto
+
+    @IsOptional()
+    credit?: CreateCreditDto
+
+    @IsNumber()
+    fk_civil_status: number
+
+    @IsNumber()
+    fk_housing_type: number
 
     @IsString()
     user_create:string;

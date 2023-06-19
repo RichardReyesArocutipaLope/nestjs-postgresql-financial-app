@@ -1,4 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Customer } from "src/catalogue/customers/entities/customer.entity";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Business {
@@ -73,7 +74,8 @@ export class Business {
     observation:string;
 
     //! FK
-
+    @OneToOne(() => Customer, customer => customer.business)
+    customer: Customer;
 
     // auditoria
     

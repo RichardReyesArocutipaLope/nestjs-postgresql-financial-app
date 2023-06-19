@@ -109,14 +109,14 @@ export class Customer {
         () => CivilStatus,
         (civil_status) => civil_status.customer,
     )
-    fk_civil_status: CivilStatus
+    fk_civil_status: number
 
     //! FK
     @ManyToOne(
         () => HousingType,
         (housing_type) => housing_type.customer,
     )
-    fk_housing_type: HousingType
+    fk_housing_type: number
 
     @OneToOne(()=>Business)
     @JoinColumn()

@@ -1,4 +1,6 @@
 import { IsBoolean, IsIn, IsInt, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { CreateAvalDto } from "src/catalogue/avales/dto/create-aval.dto";
+import { CreatePersonalReferenceDto } from "src/catalogue/personal-reference/dto/create-personal-reference.dto";
 
 export class CreateCreditDto {
 
@@ -38,6 +40,24 @@ export class CreateCreditDto {
     @IsString()
     @IsOptional()
     observation?:string;
+
+    @IsOptional()
+    aval?: CreateAvalDto
+
+    @IsOptional()
+    personalReference?: CreatePersonalReferenceDto
+
+    @IsNumber()
+    fk_employee_cobrador: number
+
+    @IsNumber()
+    fk_employee_analista: number
+
+    @IsNumber()
+    fk_financial_interest: number
+
+    @IsNumber()
+    fk_period_type: number
 
     @IsString()
     user_create:string;

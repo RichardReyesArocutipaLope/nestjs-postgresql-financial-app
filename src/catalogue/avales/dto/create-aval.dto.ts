@@ -1,4 +1,5 @@
 import {IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 
 export class CreateAvalDto {
 

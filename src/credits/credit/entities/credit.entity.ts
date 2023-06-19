@@ -93,28 +93,28 @@ export class Credit {
         () => Employee,
         (employee) => employee.credit_cobrador,
     )
-    fk_employee_cobrador: Employee
+    fk_employee_cobrador: number
 
     //! FK
     @ManyToOne(
         () => Employee,
         (employee) => employee.credit_analista,
     )
-    fk_employee_analista: Employee
+    fk_employee_analista: number
 
     //! FK
     @ManyToOne(
         () => FinancialInterestRate,
         (financialInterestRate) => financialInterestRate.credit,
     )
-    fk_financial_interest: FinancialInterestRate
+    fk_financial_interest: number
 
     //! FK
     @ManyToOne(
         () => PeriodType,
         (periodType) => periodType.credit,
     )
-    fk_period_type: PeriodType
+    fk_period_type: number
 
 
     @OneToMany(

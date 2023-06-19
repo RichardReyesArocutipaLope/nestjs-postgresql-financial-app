@@ -130,6 +130,13 @@ export class SeedService {
     // TODO: Crear Aval
     // TODO: Crear PersonalReference
     // TODO: Crear Credit
+
+    const customers = initialData.customers
+    const insertPromises = [];
+    customers.forEach((item) => {
+      insertPromises.push(this.customersService.create(item));
+    })
+    await Promise.all(insertPromises)
     return true;
   }
 
