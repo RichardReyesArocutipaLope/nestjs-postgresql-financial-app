@@ -1,5 +1,7 @@
 import { IsBoolean, IsIn, IsInt, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 import { CreateAvalDto } from "src/catalogue/avales/dto/create-aval.dto";
+import { CreateBusinessDto } from "src/catalogue/business/dto/create-business.dto";
+import { CreateCustomerDto } from "src/catalogue/customers/dto/create-customer.dto";
 import { CreatePersonalReferenceDto } from "src/catalogue/personal-reference/dto/create-personal-reference.dto";
 
 export class CreateCreditDto {
@@ -46,6 +48,12 @@ export class CreateCreditDto {
 
     @IsOptional()
     personalReference?: CreatePersonalReferenceDto
+
+    @IsOptional()
+    business?: CreateBusinessDto
+
+    @IsOptional()
+    customer?: CreateCustomerDto
 
     @IsNumber()
     fk_employee_cobrador: number

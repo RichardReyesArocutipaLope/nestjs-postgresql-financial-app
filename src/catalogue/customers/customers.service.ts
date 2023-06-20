@@ -19,52 +19,13 @@ export class CustomersService {
     @InjectRepository(Customer)
     private readonly customerRepository: Repository<Customer>,
 
-    @InjectRepository(Business)
-    private readonly businessRepository: Repository<Business>,
-
-    @InjectRepository(Credit)
-    private readonly creditRepository: Repository<Credit>,
-
-    @InjectRepository(Aval)
-    private readonly avalRepository: Repository<Aval>,
-
-    @InjectRepository(PersonalReference)
-    private readonly personalReferenceRepository: Repository<PersonalReference>
-
   ) { }
-
   async create(createCustomerDto: CreateCustomerDto) {
     try {
-
-      const { business, credit, credit: { aval, personalReference }, ...customer } = createCustomerDto
-
-      const newBusiness = this.businessRepository.create(business)
-      const savedBusiness = await this.businessRepository.save(newBusiness)
-
-      const newCustomer = this.customerRepository.create({ ...customer, business: savedBusiness })
-      const savedCustomer = await this.customerRepository.save(newCustomer)
-
-      const newCredit = this.creditRepository.create({ ...credit, fk_customer: savedCustomer })
-      const savedCredit = await this.creditRepository.save(newCredit)
-
-      const newAval = this.avalRepository.create({ ...aval, fk_credit: savedCredit })
-      const savedAval = await this.avalRepository.save(newAval)
-
-      const newPersonalReference = this.personalReferenceRepository.create({ ...personalReference, fk_credit: savedCredit })
-      const savedPersonalReference = await this.personalReferenceRepository.save(newPersonalReference)
-
-
-      return {
-        Customer: savedCustomer,
-        Business: savedBusiness,
-        Credit: savedCredit,
-        Aval: savedAval,
-        PersonalReference: savedPersonalReference
-      }
+  
     } catch (error) {
       console.log(error)
       throw new InternalServerErrorException('Ayuda')
-
     }
   }
 

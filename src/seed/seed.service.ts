@@ -36,7 +36,7 @@ export class SeedService {
     // await this.seedInsertRoles();
     await this.seedInsertEmployees();
     // TODO: customers
-    await this.seedInsertCustomers() //! el customer insertara business, files, avales, personal_reference,credit;
+    await this.seedInsertCredits() //! el customer insertara business, files, avales, personal_reference,credit;
     return 'SEED EXECUTED';
   }
 
@@ -114,27 +114,19 @@ export class SeedService {
     return true;
   }
 
-  private async seedInsertRoles() {
-    const employees = initialData.employees
-    const insertPromises = [];
-    employees.forEach((item) => {
-      insertPromises.push(this.employeesService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
 
-  private async seedInsertCustomers() {
+
+  private async seedInsertCredits() {
     // TODO: Crear Customer
     // TODO: Crear Business
     // TODO: Crear Aval
     // TODO: Crear PersonalReference
     // TODO: Crear Credit
 
-    const customers = initialData.customers
+    const credits = initialData.credits
     const insertPromises = [];
-    customers.forEach((item) => {
-      insertPromises.push(this.customersService.create(item));
+    credits.forEach((item) => {
+      insertPromises.push(this.creditService.create(item));
     })
     await Promise.all(insertPromises)
     return true;
@@ -143,4 +135,14 @@ export class SeedService {
 }
 
 
+
+// private async seedInsertRoles() {
+//   const employees = initialData.employees
+//   const insertPromises = [];
+//   employees.forEach((item) => {
+//     insertPromises.push(this.employeesService.create(item));
+//   })
+//   await Promise.all(insertPromises)
+//   return true;
+// }
 

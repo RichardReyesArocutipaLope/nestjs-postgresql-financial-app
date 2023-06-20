@@ -54,12 +54,6 @@ export class CreateCustomerDto {
     @IsOptional()
     observation?:string;
 
-    @IsOptional()
-    business?: CreateBusinessDto
-
-    @IsOptional()
-    credit?: CreateCreditDto
-
     @IsNumber()
     fk_civil_status: number
 
