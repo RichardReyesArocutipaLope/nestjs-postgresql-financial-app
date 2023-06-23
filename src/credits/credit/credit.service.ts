@@ -129,13 +129,11 @@ export class CreditService {
   }
 
   async update(id: number, updateCreditDto: UpdateCreditDto) {
-
     const { aval, personalReference, customer, business, ...credit } = updateCreditDto
     const updateCredit = await this.creditRepository.preload({
       id: id,
       ...credit
     })
-    console.log(updateCredit)
     if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
     try {
@@ -148,7 +146,7 @@ export class CreditService {
       }
 
       if (personalReference.id) {
-        const updateReference = await this.personalReferenceRepository.preload({ ...aval })
+        const updateReference = await this.personalReferenceRepository.preload({ ...personalReference })
         await this.personalReferenceRepository.save(updateReference)
       }
 
@@ -167,12 +165,42 @@ export class CreditService {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   async remove(id: number) {
-    const credit = await this.findOne(id)
-    return credit
+    const removeCredit = await this.creditRepository.preload({
+      id: id,
+      is_active: false
+    })
+    if (!removeCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
+
+    await this.creditRepository.save(removeCredit)
+
+    return removeCredit
+  }
+
+  async approve(id: number) {
+    const approveCredit = await this.creditRepository.preload({
+      id: id,
+      state: 'AP'
+    })
+    if (!approveCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
+
+    await this.creditRepository.save(approveCredit)
+
+    return approveCredit
+  }
+
+  async disburse(id: number) {
+    const disburseCredit = await this.creditRepository.preload({
+      id: id,
+      state: 'DE'
+    })
+    if (!disburseCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
+
+    await this.creditRepository.save(disburseCredit)
+
+    return disburseCredit
   }
 
 

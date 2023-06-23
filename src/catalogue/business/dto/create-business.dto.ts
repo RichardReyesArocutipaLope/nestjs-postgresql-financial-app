@@ -2,11 +2,6 @@ import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-val
 
 export class CreateBusinessDto {
 
-    @IsNumber()
-    @IsOptional()
-    @IsPositive()
-    id: number;
-
     @IsString()
     business_description:string;
 

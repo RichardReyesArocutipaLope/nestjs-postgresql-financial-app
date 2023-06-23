@@ -33,4 +33,15 @@ export class CreditController {
   remove(@Param('id') id: string) {
     return this.creditsService.remove(+id);
   }
+
+  @Patch('approve/:id')
+  approve(@Param('id') id: string) {
+    return this.creditsService.approve(+id);
+  }
+
+  @Patch('disburse/:id')
+  disburse(@Param('id') id: string) {
+    return this.creditsService.disburse(+id);
+  }
+
 }

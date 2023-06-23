@@ -1,14 +1,6 @@
 import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
-import { CreateBusinessDto } from "src/catalogue/business/dto/create-business.dto";
-import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 
 export class CreateCustomerDto {
-
-
-    @IsNumber()
-    @IsOptional()
-    @IsPositive()
-    id: number;
 
     @IsNumber()
     @IsPositive()

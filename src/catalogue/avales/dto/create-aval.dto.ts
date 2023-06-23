@@ -1,12 +1,6 @@
 import {IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
-import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 
 export class CreateAvalDto {
-
-    @IsNumber()
-    @IsOptional()
-    @IsPositive()
-    id: number;
 
     @IsNumber()
     @IsPositive()
@@ -26,7 +20,6 @@ export class CreateAvalDto {
 
     @IsString()
     address: string;
-
 
     @IsString()
     user_create:string;

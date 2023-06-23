@@ -3,11 +3,6 @@ import {IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 export class CreatePersonalReferenceDto {
 
     @IsNumber()
-    @IsOptional()
-    @IsPositive()
-    id: number;
-
-    @IsNumber()
     @IsPositive()
     dni: number;
 
