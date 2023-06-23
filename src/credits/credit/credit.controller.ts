@@ -3,6 +3,7 @@ import { CreditService } from './credit.service';
 import { CreateCreditDto } from './dto/create-credit.dto';
 import { UpdateCreditDto } from './dto/update-credit.dto';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { FilterCreditDto } from './dto/filter-credit.dto';
 
 @Controller('credits/credit')
 export class CreditController {
@@ -14,8 +15,8 @@ export class CreditController {
   }
 
   @Get()
-  findAll(@Query() paginationDto:PaginationDto) {
-    return this.creditsService.findAll(paginationDto);
+  findAll(@Query() paginationDto:PaginationDto, @Body() filterCreditDto: FilterCreditDto) {
+    return this.creditsService.findAll(paginationDto, filterCreditDto);
   }
 
   @Get(':id')
