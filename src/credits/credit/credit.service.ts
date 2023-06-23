@@ -94,7 +94,8 @@ export class CreditService {
         }))
       .andWhere(new Brackets((qb2) => {
           qb2.where("customer.dni=:dni", { dni: +search_value, })
-            .orWhere("CONCAT(customer.first_name, ' ', customer.last_name) LIKE :client ", { client: `%${search_value}%` })
+            .orWhere("customer.first_name LIKE :client ", { client: `%${search_value}%` })
+            .orWhere("customer.last_name LIKE :client ", { client: `%${search_value}%` })
             .orWhere("cast(:term as text) is null ", { term: search_value })
         }))
       .andWhere(new Brackets((qb3) => {
