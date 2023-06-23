@@ -4,6 +4,11 @@ import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 export class CreateAvalDto {
 
     @IsNumber()
+    @IsOptional()
+    @IsPositive()
+    id: number;
+
+    @IsNumber()
     @IsPositive()
     dni: number;
 

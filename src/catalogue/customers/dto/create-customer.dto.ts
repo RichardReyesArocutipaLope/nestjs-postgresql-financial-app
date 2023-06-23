@@ -4,6 +4,12 @@ import { CreateCreditDto } from "src/credits/credit/dto/create-credit.dto";
 
 export class CreateCustomerDto {
 
+
+    @IsNumber()
+    @IsOptional()
+    @IsPositive()
+    id: number;
+
     @IsNumber()
     @IsPositive()
     dni: number;

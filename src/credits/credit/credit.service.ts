@@ -89,27 +89,27 @@ export class CreditService {
       .innerJoin("credit.fk_employee_analista", "analista")
       .innerJoin("credit.fk_period_type", "period_type")
       .where(new Brackets((qb) => {
-          qb.where("credit.state=:state", { state })
-            .orWhere("cast(:state as text) is null ", { state })
-        }))
+        qb.where("credit.state=:state", { state })
+          .orWhere("cast(:state as text) is null ", { state })
+      }))
       .andWhere(new Brackets((qb2) => {
-          qb2.where("customer.dni=:dni", { dni: +search_value, })
-            .orWhere("customer.first_name LIKE :client ", { client: `%${search_value}%` })
-            .orWhere("customer.last_name LIKE :client ", { client: `%${search_value}%` })
-            .orWhere("cast(:term as text) is null ", { term: search_value })
-        }))
+        qb2.where("customer.dni=:dni", { dni: +search_value, })
+          .orWhere("LOWER(customer.first_name) LIKE :client ", { client: `%${search_value}%` })
+          .orWhere("LOWER(customer.last_name) LIKE :client ", { client: `%${search_value}%` })
+          .orWhere("cast(:term as text) is null ", { term: search_value })
+      }))
       .andWhere(new Brackets((qb3) => {
-          qb3.where("credit.date_of_issue BETWEEN :date_range_first AND :date_range_last", { date_range_first, date_range_last })
-            .orWhere("cast(:date_range_first as date) is null", { date_range_first })
-        }))
+        qb3.where("credit.date_of_issue BETWEEN :date_range_first AND :date_range_last", { date_range_first, date_range_last })
+          .orWhere("cast(:date_range_first as date) is null", { date_range_first })
+      }))
       .andWhere(new Brackets((qb4) => {
-          qb4.where("credit.requested_money BETWEEN :money_range_first AND :money_range_last", { money_range_first, money_range_last })
-            .orWhere("cast(:money_range_first as numeric) is null", { money_range_first })
-        }))
+        qb4.where("credit.requested_money BETWEEN :money_range_first AND :money_range_last", { money_range_first, money_range_last })
+          .orWhere("cast(:money_range_first as numeric) is null", { money_range_first })
+      }))
       .andWhere(new Brackets((qb5) => {
-          qb5.where("analista.id=:id_analista", { id_analista })
-            .orWhere("cast(:id_analista as numeric) is null", { id_analista })
-        }))
+        qb5.where("analista.id=:id_analista", { id_analista })
+          .orWhere("cast(:id_analista as numeric) is null", { id_analista })
+      }))
       .andWhere(new Brackets((qb6) => {
         qb6.where("cobrador.id=:id_cobrador", { id_cobrador })
           .orWhere("cast(:id_cobrador as numeric) is null", { id_cobrador })
@@ -128,9 +128,46 @@ export class CreditService {
     return credit
   }
 
-  update(id: number, updateCreditDto: UpdateCreditDto) {
-    return `This action updates a #${id} credit`;
-    // aprobar desembolsar
+  async update(id: number, updateCreditDto: UpdateCreditDto) {
+
+    const { aval, personalReference, customer, business, ...credit } = updateCreditDto
+    const updateCredit = await this.creditRepository.preload({
+      id: id,
+      ...credit
+    })
+    console.log(updateCredit)
+    if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
+
+    try {
+
+      await this.creditRepository.save(updateCredit)
+
+      if (aval.id) {
+        const updateAval = await this.avalRepository.preload({ ...aval })
+        await this.avalRepository.save(updateAval)
+      }
+
+      if (personalReference.id) {
+        const updateReference = await this.personalReferenceRepository.preload({ ...aval })
+        await this.personalReferenceRepository.save(updateReference)
+      }
+
+      if (customer.id) {
+        const updateCustomer = await this.customerRepository.preload({ ...customer })
+        await this.customerRepository.save(updateCustomer)
+      }
+
+      if (business.id) {
+        const updateBusiness = await this.businessRepository.preload({ ...business })
+        await this.businessRepository.save(updateBusiness)
+      }
+
+      return updateCredit
+
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   async remove(id: number) {
