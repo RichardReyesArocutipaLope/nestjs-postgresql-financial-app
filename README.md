@@ -34,7 +34,9 @@ yarn add @nestjs/typeorm typeorm pg
 
 ## 
 yarn add bcrypt
+yarn add -D @types/bcrypt
 
 ## passport 
  yarn add @nestjs/passport passport
  yarn add @nestjs/jwt passport-jwt
+ yarn add -D @types/passport-jwt

@@ -1,6 +1,6 @@
 import { Employee } from "src/catalogue/employees/entities/employee.entity";
 import { Role } from "src/security/roles/entities/role.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
 export class User {
@@ -70,4 +70,13 @@ export class User {
     })
     updated_at: string;
 
+    @BeforeInsert()
+    checkFullNameBeforeInsert(){
+        this.full_name=this.full_name.toLowerCase().trim();
+    }
+
+    @BeforeUpdate()
+    checkFullNameBeforeUpdate(){
+        this.full_name=this.full_name.toLowerCase().trim();
+    }
 }
