@@ -31,3 +31,10 @@ yarn add @nestjs/config
 
 ## instalar typeorm
 yarn add @nestjs/typeorm typeorm pg
+
+## 
+yarn add bcrypt
+
+## passport 
+ yarn add @nestjs/passport passport
+ yarn add @nestjs/jwt passport-jwt

@@ -1,3 +1,4 @@
+import { User } from "src/auth/users/entities/user.entity";
 import { Credit } from "src/credits/credit/entities/credit.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -79,6 +80,14 @@ export class Employee {
         { cascade: false }
     )
     credit_analista: Credit
+
+    //! FK
+    @OneToMany(
+        () => User,
+        (user) => user.fk_employee,
+        { cascade: false }
+    )
+    user: User
 
     // auditoria
 
