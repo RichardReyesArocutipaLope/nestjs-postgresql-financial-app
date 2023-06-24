@@ -26,6 +26,12 @@ interface SeedEmployees {
     created_at: string;
 }
 
+interface seedRoles {
+    name: string;
+    user_create: string;
+    created_at: string;
+}
+
 type ValidHousingType = 'propia' | 'alquilada' | 'cedida' | 'otra';
 interface SeedHousingType {
     name: ValidHousingType
@@ -118,9 +124,10 @@ interface SeedCredit {
 interface SeedData {
     periodType: SeedPeriodType[],
     financialInterestRate: SeedFinancialInterestRate[],
-    employees: SeedEmployees[],
     housingType: SeedHousingType[],
     civilStatus: SeedCivilStatus[],
+    roles: seedRoles[],
+    employees: SeedEmployees[],
     credits: SeedCredit[]
 }
 
@@ -260,6 +267,29 @@ export const initialData: SeedData = {
         },
     ],
 
+
+    roles: [
+        {
+            name: 'administrador',
+            user_create: 'richard',
+            created_at: '2023-06-19 10:23:54'
+        },
+        {
+            name: 'analista',
+            user_create: 'richard',
+            created_at: '2023-06-19 10:23:54'
+        },
+        {
+            name: 'cajero',
+            user_create: 'richard',
+            created_at: '2023-06-19 10:23:54'
+        },
+        {
+            name: 'cobrador',
+            user_create: 'richard',
+            created_at: '2023-06-19 10:23:54'
+        },
+    ],
 
     credits: [
         {

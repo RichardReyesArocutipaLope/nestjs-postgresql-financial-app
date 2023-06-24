@@ -32,14 +32,14 @@ export class User {
         () => Employee,
         (employee) => employee.user,
     )
-    fk_employee: Employee
+    fk_employee: number
 
     //! FK
     @ManyToOne(
         () => Role,
         (role) => role.user,
     )
-    fk_role: Role
+    fk_role: number
 
 
     //! auditoria

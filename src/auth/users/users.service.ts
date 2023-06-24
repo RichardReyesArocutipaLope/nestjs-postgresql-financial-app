@@ -34,7 +34,7 @@ export class UsersService {
       delete user.password;
       return {
         user,
-        token: this.getJwtToken({ full_name: user.full_name })
+        token: this.getJwtToken({ id: user.id })
       };
 
     } catch (error) {
@@ -46,7 +46,7 @@ export class UsersService {
     const { password, full_name } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { full_name },
-      select: { full_name: true, password: true }
+      select: { full_name: true, password: true, id: true }
     })
 
     if (!user) throw new UnauthorizedException('Credentails are not valid ( fullName )')
@@ -56,7 +56,7 @@ export class UsersService {
 
     return {
       user,
-      token: this.getJwtToken({ full_name: user.full_name })
+      token: this.getJwtToken({ id: user.id })
     };
 
   }
