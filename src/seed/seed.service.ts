@@ -31,113 +31,113 @@ export class SeedService {
   ) { }
 
   async runSeed() {
-    await this.deleteDataBase();
-    await this.seedInsertHousingType();
-    await this.seedInsertCivilStatus();
-    await this.seedInsertPeriodType();
-    await this.seedInsertFinancialInterestRate();
-    await this.seedInsertRoles();
-    await this.seedInsertEmployees();
-    // await this.seedInsertUsers();
-    await this.seedInsertCredits();
-    return 'SEED EXECUTED';
+    // await this.deleteDataBase();
+    // await this.seedInsertHousingType();
+    // await this.seedInsertCivilStatus();
+    // await this.seedInsertPeriodType();
+    // await this.seedInsertFinancialInterestRate();
+    // await this.seedInsertRoles();
+    // await this.seedInsertEmployees();
+    // // await this.seedInsertUsers();
+    // await this.seedInsertCredits();
+    // return 'SEED EXECUTED';
   }
 
-  private async deleteDataBase() {
-    // avales
-    // personalReference
-    // credits
-    // customer
-    // business
-    // users
-    // roles
-    // Employees
-    // financialInterestRate
-    // periodtype
-    // civil status
-    // housing type
-    await this.avalesService.deleteAllAvales()
-    await this.personalReferenceService.deleteAllReference();
-    await this.creditService.deleteAllCredits();
-    await this.customersService.deleteAllCustomers();
-    await this.businessService.deleteAllBusiness();
-    await this.usersService.deleteAllUsers();
-    await this.rolesService.deleteAllRoles();
-    await this.employeesService.deleteAllEmployees();
-    await this.financialInterestRateService.deleteAllFinancialInterestRate();
-    await this.periodTypeService.deleteAllPeriodType();
-    await this.civilStatusService.deleteAllCivilStatus();
-    await this.housingTypeService.deleteAllHousingType();
-    return true
-  }
+  // private async deleteDataBase() {
+  //   // avales
+  //   // personalReference
+  //   // credits
+  //   // customer
+  //   // business
+  //   // users
+  //   // roles
+  //   // Employees
+  //   // financialInterestRate
+  //   // periodtype
+  //   // civil status
+  //   // housing type
+  //   await this.avalesService.deleteAllAvales()
+  //   await this.personalReferenceService.deleteAllReference();
+  //   await this.creditService.deleteAllCredits();
+  //   await this.customersService.deleteAllCustomers();
+  //   await this.businessService.deleteAllBusiness();
+  //   await this.usersService.deleteAllUsers();
+  //   await this.rolesService.deleteAllRoles();
+  //   await this.employeesService.deleteAllEmployees();
+  //   await this.financialInterestRateService.deleteAllFinancialInterestRate();
+  //   await this.periodTypeService.deleteAllPeriodType();
+  //   await this.civilStatusService.deleteAllCivilStatus();
+  //   await this.housingTypeService.deleteAllHousingType();
+  //   return true
+  // }
 
-  private async seedInsertHousingType() {
-    const housingType = initialData.housingType
-    const insertPromises = [];
-    housingType.forEach((item) => {
-      insertPromises.push(this.housingTypeService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertHousingType() {
+  //   const housingType = initialData.housingType
+  //   const insertPromises = [];
+  //   housingType.forEach((item) => {
+  //     insertPromises.push(this.housingTypeService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertCivilStatus() {
-    const civilStatus = initialData.civilStatus
-    const insertPromises = [];
-    civilStatus.forEach((item) => {
-      insertPromises.push(this.civilStatusService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertCivilStatus() {
+  //   const civilStatus = initialData.civilStatus
+  //   const insertPromises = [];
+  //   civilStatus.forEach((item) => {
+  //     insertPromises.push(this.civilStatusService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertPeriodType() {
-    const periodType = initialData.periodType
-    const insertPromises = [];
-    periodType.forEach((item) => {
-      insertPromises.push(this.periodTypeService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertPeriodType() {
+  //   const periodType = initialData.periodType
+  //   const insertPromises = [];
+  //   periodType.forEach((item) => {
+  //     insertPromises.push(this.periodTypeService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertFinancialInterestRate() {
-    const financialInterestRate = initialData.financialInterestRate
-    const insertPromises = [];
-    financialInterestRate.forEach((item) => {
-      insertPromises.push(this.financialInterestRateService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertFinancialInterestRate() {
+  //   const financialInterestRate = initialData.financialInterestRate
+  //   const insertPromises = [];
+  //   financialInterestRate.forEach((item) => {
+  //     insertPromises.push(this.financialInterestRateService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertEmployees() {
-    const employees = initialData.employees
-    const insertPromises = [];
-    employees.forEach((item) => {
-      insertPromises.push(this.employeesService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertEmployees() {
+  //   const employees = initialData.employees
+  //   const insertPromises = [];
+  //   employees.forEach((item) => {
+  //     insertPromises.push(this.employeesService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertRoles() {
-    const roles = initialData.roles
-    const insertPromises = [];
-    roles.forEach((item) => {
-      insertPromises.push(this.rolesService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertRoles() {
+  //   const roles = initialData.roles
+  //   const insertPromises = [];
+  //   roles.forEach((item) => {
+  //     insertPromises.push(this.rolesService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 
-  private async seedInsertCredits() {
-    const credits = initialData.credits
-    const insertPromises = [];
-    credits.forEach((item) => {
-      insertPromises.push(this.creditService.create(item));
-    })
-    await Promise.all(insertPromises)
-    return true;
-  }
+  // private async seedInsertCredits() {
+  //   const credits = initialData.credits
+  //   const insertPromises = [];
+  //   credits.forEach((item) => {
+  //     insertPromises.push(this.creditService.create(item));
+  //   })
+  //   await Promise.all(insertPromises)
+  //   return true;
+  // }
 }

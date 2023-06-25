@@ -124,18 +124,18 @@ export class Customer {
     // auditoria
 
     @Column({
-        type: 'varchar',
-        length: 50,
-        nullable: true,
+        type: 'text',
+        array: true,
+        default: []
     })
-    user_create: string;
+    user_create: string[];
 
     @Column({
-        type: 'varchar',
-        length: 50,
-        nullable: true,
+        type: 'text',
+        array: true,
+        default: []
     })
-    user_update: string;
+    user_update: string[];
 
     @Column({
         type: 'timestamp',

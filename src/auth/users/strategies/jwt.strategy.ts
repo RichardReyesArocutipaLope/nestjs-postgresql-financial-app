@@ -28,6 +28,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
             where: { id },
             relations: {
                 fk_role: true,
+                fk_employee: true
             }
         })
         if (!user) throw new UnauthorizedException('Token not valid')

@@ -1,4 +1,4 @@
-import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 
 export class CreateCustomerDto {
 
@@ -58,12 +58,14 @@ export class CreateCustomerDto {
     @IsNumber()
     fk_housing_type: number
 
-    @IsString()
-    user_create:string;
+    @IsString({each:true})
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
+    @IsString({each:true})
+    @IsArray()
     @IsOptional()
-    user_update?:string;
+    user_update?:string[];
 
     @IsString()
     created_at:string;

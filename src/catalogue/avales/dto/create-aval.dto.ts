@@ -1,4 +1,4 @@
-import {IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import {IsArray, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 
 export class CreateAvalDto {
 
@@ -21,12 +21,14 @@ export class CreateAvalDto {
     @IsString()
     address: string;
 
-    @IsString()
-    user_create:string;
+    @IsString({each:true})
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
+    @IsString({each:true})
+    @IsArray()
     @IsOptional()
-    user_update?:string;
+    user_update?:string[];
 
     @IsString()
     created_at:string;

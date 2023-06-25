@@ -1,57 +1,59 @@
-import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 
 export class CreateBusinessDto {
 
     @IsString()
-    business_description:string;
+    business_description: string;
 
     @IsString()
-    address:string;
+    address: string;
 
     @IsString()
     @IsOptional()
-    address_reference?:string;
+    address_reference?: string;
 
     @IsNumber()
     @IsPositive()
-    daily_gain:number;
+    daily_gain: number;
 
     @IsNumber()
     @IsPositive()
-    maximum_daily_gain:number;
+    maximum_daily_gain: number;
 
     @IsNumber()
     @IsPositive()
-    minimum_daily_gain:number;
+    minimum_daily_gain: number;
 
     @IsNumber()
     @IsPositive()
-    inventory_value:number;
+    inventory_value: number;
 
     @IsBoolean()
     @IsOptional()
-    have_property_documents?:boolean;
+    have_property_documents?: boolean;
 
     @IsBoolean()
     @IsOptional()
-    have_vouchers?:boolean;
+    have_vouchers?: boolean;
 
     @IsString()
     @IsOptional()
-    observation?:string;
+    observation?: string;
+
+    @IsString({ each: true })
+    @IsArray()
+    user_create: string[];
+
+    @IsString({ each: true })
+    @IsArray()
+    @IsOptional()
+    user_update?: string[];
 
     @IsString()
-    user_create:string;
+    created_at: string;
 
     @IsString()
     @IsOptional()
-    user_update?:string;
-
-    @IsString()
-    created_at:string;
-
-    @IsString()
-    @IsOptional()
-    updated_at?:string;
+    updated_at?: string;
 
 }

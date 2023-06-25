@@ -5,53 +5,53 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class FinancialInterestRate {
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
 
     @Column({
-        type:'varchar',
-        length:50,
+        type: 'varchar',
+        length: 50,
     })
-    name:string;
-    
+    name: string;
+
     @Column({
-        type:'boolean',
+        type: 'boolean',
         default: true
     })
-    is_active:boolean;
+    is_active: boolean;
 
     // FK
     @OneToMany(
-        ()=>Credit,
-        (credit)=>credit.fk_financial_interest,
+        () => Credit,
+        (credit) => credit.fk_financial_interest,
         { cascade: false }
     )
-    credit:Credit
+    credit: Credit
 
     // auditoria
-    
-    @Column({
-        type:'varchar',
-        length:50,
-        nullable: true,
-    })
-    user_create:string;
 
     @Column({
-        type:'varchar',
-        length:50,
-        nullable: true,
+        type: 'text',
+        array: true,
+        default: []
     })
-    user_update:string;
+    user_create: string[];
 
     @Column({
-        type:'timestamp',
-        nullable: true,
+        type: 'text',
+        array: true,
+        default: []
     })
-    created_at:string;
+    user_update: string[];
 
     @Column({
-        type:'timestamp',
+        type: 'timestamp',
         nullable: true,
     })
-    updated_at:string;
+    created_at: string;
+
+    @Column({
+        type: 'timestamp',
+        nullable: true,
+    })
+    updated_at: string;
 }

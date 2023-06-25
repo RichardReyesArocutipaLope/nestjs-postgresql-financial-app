@@ -1,4 +1,4 @@
-import { IsBoolean, IsOptional, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsOptional, IsString } from "class-validator";
 
 
 export class CreateCivilStatusDto {
@@ -9,12 +9,14 @@ export class CreateCivilStatusDto {
     @IsOptional()
     is_active?: boolean;
 
-    @IsString()
-    user_create:string;
+    @IsString({each:true})
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
+    @IsString({each:true})
+    @IsArray()
     @IsOptional()
-    user_update?:string;
+    user_update?:string[];
 
     @IsString()
     created_at:string;

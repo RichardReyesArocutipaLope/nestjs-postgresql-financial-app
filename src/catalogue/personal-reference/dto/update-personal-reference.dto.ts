@@ -1,4 +1,4 @@
-import {IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import {IsArray, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 
 export class UpdatePersonalReferenceDto {
     
@@ -36,12 +36,14 @@ export class UpdatePersonalReferenceDto {
     @IsOptional()
     relationship?: string;
 
-    @IsString()
+    @IsString({each:true})
     @IsOptional()
-    user_create?:string;
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
-    user_update:string;
+    @IsString({each:true})
+    @IsArray()
+    user_update?:string[];
 
     @IsString()
     @IsOptional()

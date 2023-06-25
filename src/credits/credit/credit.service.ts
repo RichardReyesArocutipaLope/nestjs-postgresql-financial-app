@@ -10,6 +10,9 @@ import { Aval } from 'src/catalogue/avales/entities/aval.entity';
 import { PersonalReference } from 'src/catalogue/personal-reference/entities/personal-reference.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { FilterCreditDto } from './dto/filter-credit.dto';
+import { User } from 'src/auth/users/entities/user.entity';
+import * as moment from 'moment';
+
 @Injectable()
 export class CreditService {
 
@@ -33,7 +36,7 @@ export class CreditService {
 
   ) { }
 
-  async create(createCreditDto: CreateCreditDto) {
+  async create(createCreditDto: CreateCreditDto, user: User) {
     try {
       const { aval, personalReference, customer, business, ...credit } = createCreditDto
 
@@ -128,7 +131,7 @@ export class CreditService {
     return credit
   }
 
-  async update(id: number, updateCreditDto: UpdateCreditDto) {
+  async update(id: number, updateCreditDto: UpdateCreditDto, user: User) {
     const { aval, personalReference, customer, business, ...credit } = updateCreditDto
     const updateCredit = await this.creditRepository.preload({
       id: id,
@@ -137,6 +140,13 @@ export class CreditService {
     if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
     try {
+
+      const { full_name, fk_employee } = user;
+
+      if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+  
+      updateCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
+      updateCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
 
       await this.creditRepository.save(updateCredit)
 
@@ -167,36 +177,57 @@ export class CreditService {
     }
   }
 
-  async remove(id: number) {
+  async remove(id: number, user: User) {
     const removeCredit = await this.creditRepository.preload({
       id: id,
       is_active: false
     })
     if (!removeCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
+    const { full_name, fk_employee } = user;
+
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+
+    removeCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
+    removeCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
+
     await this.creditRepository.save(removeCredit)
 
     return removeCredit
   }
 
-  async approve(id: number) {
+  async approve(id: number, user: User) {
+
     const approveCredit = await this.creditRepository.preload({
       id: id,
       state: 'AP'
     })
     if (!approveCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
+    const { full_name, fk_employee } = user;
+
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+
+    approveCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
+    approveCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss');
     await this.creditRepository.save(approveCredit)
 
     return approveCredit
   }
 
-  async disburse(id: number) {
+  async disburse(id: number, user: User) {
     const disburseCredit = await this.creditRepository.preload({
       id: id,
       state: 'DE'
     })
     if (!disburseCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
+
+    const { full_name, fk_employee } = user;
+
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+
+    disburseCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
+    disburseCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
 
     await this.creditRepository.save(disburseCredit)
 

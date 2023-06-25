@@ -1,4 +1,4 @@
-import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 
 export class UpdateBusinessDto {
     @IsNumber()
@@ -50,12 +50,14 @@ export class UpdateBusinessDto {
     @IsOptional()
     observation?:string;
 
-    @IsString()
+    @IsString({each:true})
     @IsOptional()
-    user_create?:string;
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
-    user_update:string;
+    @IsString({each:true})
+    @IsArray()
+    user_update?:string[];
 
     @IsString()
     @IsOptional()

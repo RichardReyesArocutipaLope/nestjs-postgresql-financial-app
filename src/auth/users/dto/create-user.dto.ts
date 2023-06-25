@@ -1,4 +1,4 @@
-import { IsEmail, IsNumber, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
+import { IsArray, IsEmail, IsNumber, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
 export class CreateUserDto {
 
@@ -22,12 +22,14 @@ export class CreateUserDto {
     @IsNumber()
     fk_role: number
 
-    @IsString()
-    user_create:string;
+    @IsString({each:true})
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
+    @IsString({each:true})
+    @IsArray()
     @IsOptional()
-    user_update?:string;
+    user_update?:string[];
 
     @IsString()
     created_at:string;

@@ -7,6 +7,7 @@ import { CustomersModule } from 'src/catalogue/customers/customers.module';
 import { BusinessModule } from 'src/catalogue/business/business.module';
 import { AvalesModule } from 'src/catalogue/avales/avales.module';
 import { PersonalReferenceModule } from 'src/catalogue/personal-reference/personal-reference.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   controllers: [CreditController],
@@ -16,7 +17,8 @@ import { PersonalReferenceModule } from 'src/catalogue/personal-reference/person
     CustomersModule,
     BusinessModule,
     AvalesModule,
-    PersonalReferenceModule
+    PersonalReferenceModule,
+    AuthModule
   ],
   exports: [
     CreditService,

@@ -1,15 +1,17 @@
-import {IsOptional, IsString } from "class-validator";
+import {IsArray, IsOptional, IsString } from "class-validator";
 
 export class CreateRoleDto {
     @IsString()
     name:string;
 
-    @IsString()
-    user_create:string;
+    @IsString({each:true})
+    @IsArray()
+    user_create:string[];
 
-    @IsString()
+    @IsString({each:true})
+    @IsArray()
     @IsOptional()
-    user_update?:string;
+    user_update?:string[];
 
     @IsString()
     created_at:string;
