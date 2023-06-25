@@ -8,6 +8,8 @@ import { GetUser } from './decorators/get-user.decorator';
 import { User } from './entities/user.entity';
 import { RawHeaders } from './decorators/raw-headers.decorator';
 import { UserRoleGuard } from './guards/user-role/user-role.guard';
+import { RolProtected } from './decorators/rol-protected.decorator';
+import { ValidRoles } from './interfaces/valid-roles';
 
 @Controller('auth/users')
 export class UsersController {
@@ -42,7 +44,7 @@ export class UsersController {
   }
 
   @Get('private2')
-  @SetMetadata('roles',['admin'])
+  @RolProtected(ValidRoles.administrador, ValidRoles.analista)
   @UseGuards(AuthGuard(), UserRoleGuard)
   privateRoute2(
     @GetUser() user: User,
@@ -52,6 +54,20 @@ export class UsersController {
       user
     }
   }
+
+
+  @Get('private3')
+  @RolProtected(ValidRoles.administrador, ValidRoles.analista)
+  @UseGuards(AuthGuard(), UserRoleGuard)
+  privateRoute3(
+    @GetUser() user: User,
+  ){
+    return {
+      ok:true,
+      user
+    }
+  }
+
 
 
   @Get()

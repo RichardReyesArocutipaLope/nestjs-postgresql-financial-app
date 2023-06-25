@@ -87,4 +87,13 @@ export class UsersService {
     this.logger.error(error)
     throw new InternalServerErrorException('Unexpected error, check server logs')
   }
+
+  async deleteAllUsers() {
+    const query = this.userRepository.createQueryBuilder('deleteAllUsers')
+    try {
+      return await query.delete().where({}).execute();
+    } catch (error) {
+      this.handleExceptions(error)
+    }
+  }
 }

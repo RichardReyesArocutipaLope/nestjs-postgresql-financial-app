@@ -10,6 +10,8 @@ import { BusinessService } from '../catalogue/business/business.service';
 import { CustomersService } from '../catalogue/customers/customers.service';
 import { AvalesService } from '../catalogue/avales/avales.service';
 import { PersonalReferenceService } from '../catalogue/personal-reference/personal-reference.service';
+import { RolesService } from 'src/security/roles/roles.service';
+import { UsersService } from 'src/auth/users/users.service';
 
 @Injectable()
 export class SeedService {
@@ -23,7 +25,9 @@ export class SeedService {
     private readonly businessService: BusinessService,
     private readonly customersService: CustomersService,
     private readonly avalesService: AvalesService,
-    private readonly personalReferenceService: PersonalReferenceService
+    private readonly personalReferenceService: PersonalReferenceService,
+    private readonly rolesService: RolesService,
+    private readonly usersService: UsersService
   ) { }
 
   async runSeed() {
@@ -32,11 +36,10 @@ export class SeedService {
     await this.seedInsertCivilStatus();
     await this.seedInsertPeriodType();
     await this.seedInsertFinancialInterestRate();
-    // TODO: roles
-    // await this.seedInsertRoles();
+    await this.seedInsertRoles();
     await this.seedInsertEmployees();
-    // TODO: customers
-    await this.seedInsertCredits() //! el customer insertara business, files, avales, personal_reference,credit;
+    // await this.seedInsertUsers();
+    await this.seedInsertCredits();
     return 'SEED EXECUTED';
   }
 
@@ -44,8 +47,10 @@ export class SeedService {
     // avales
     // personalReference
     // credits
-    // business
     // customer
+    // business
+    // users
+    // roles
     // Employees
     // financialInterestRate
     // periodtype
@@ -54,8 +59,10 @@ export class SeedService {
     await this.avalesService.deleteAllAvales()
     await this.personalReferenceService.deleteAllReference();
     await this.creditService.deleteAllCredits();
-    await this.businessService.deleteAllBusiness();
     await this.customersService.deleteAllCustomers();
+    await this.businessService.deleteAllBusiness();
+    await this.usersService.deleteAllUsers();
+    await this.rolesService.deleteAllRoles();
     await this.employeesService.deleteAllEmployees();
     await this.financialInterestRateService.deleteAllFinancialInterestRate();
     await this.periodTypeService.deleteAllPeriodType();
@@ -114,15 +121,17 @@ export class SeedService {
     return true;
   }
 
-
+  private async seedInsertRoles() {
+    const roles = initialData.roles
+    const insertPromises = [];
+    roles.forEach((item) => {
+      insertPromises.push(this.rolesService.create(item));
+    })
+    await Promise.all(insertPromises)
+    return true;
+  }
 
   private async seedInsertCredits() {
-    // TODO: Crear Customer
-    // TODO: Crear Business
-    // TODO: Crear Aval
-    // TODO: Crear PersonalReference
-    // TODO: Crear Credit
-
     const credits = initialData.credits
     const insertPromises = [];
     credits.forEach((item) => {
@@ -131,18 +140,4 @@ export class SeedService {
     await Promise.all(insertPromises)
     return true;
   }
-
 }
-
-
-
-// private async seedInsertRoles() {
-//   const employees = initialData.employees
-//   const insertPromises = [];
-//   employees.forEach((item) => {
-//     insertPromises.push(this.employeesService.create(item));
-//   })
-//   await Promise.all(insertPromises)
-//   return true;
-// }
-

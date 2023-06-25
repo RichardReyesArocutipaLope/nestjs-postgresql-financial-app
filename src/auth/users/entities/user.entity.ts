@@ -39,7 +39,7 @@ export class User {
         () => Role,
         (role) => role.user,
     )
-    fk_role: number
+    fk_role: Role | number
 
 
     //! auditoria

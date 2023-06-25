@@ -14,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
 
-        configService:ConfigService
+        configService: ConfigService
     ) {
         super({
             secretOrKey: configService.get('JWT_SECRET'),
@@ -24,9 +24,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     async validate(payload: JwtPayload): Promise<User> {
         const { id } = payload;
-        const user = await this.userRepository.findOneBy({id})
-        if (!user) throw new UnauthorizedException('Token not valid') 
-        if (!user.is_active) throw new UnauthorizedException('User is inactive') 
+        const user = await this.userRepository.findOne({
+            where: { id },
+            relations: {
+                fk_role: true,
+            }
+        })
+        if (!user) throw new UnauthorizedException('Token not valid')
+        if (!user.is_active) throw new UnauthorizedException('User is inactive')
         return user;
     }
 }
