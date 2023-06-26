@@ -75,20 +75,4 @@ export class UpdateCreditDto {
     @IsOptional()
     fk_period_type?: number
 
-    @IsString({each:true})
-    @IsOptional()
-    @IsArray()
-    user_create:string[];
-
-    @IsString({each:true})
-    @IsArray()
-    user_update?:string[];
-
-    @IsString()
-    @IsOptional()
-    created_at?:string;
-
-    @IsString()
-    updated_at:string;
-
 }

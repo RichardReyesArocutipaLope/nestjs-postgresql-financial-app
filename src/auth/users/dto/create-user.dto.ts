@@ -20,21 +20,7 @@ export class CreateUserDto {
     fk_employee: number
 
     @IsNumber()
-    fk_role: number
-
-    @IsString({each:true})
-    @IsArray()
-    user_create:string[];
-
-    @IsString({each:true})
-    @IsArray()
     @IsOptional()
-    user_update?:string[];
+    fk_role?: number
 
-    @IsString()
-    created_at:string;
-
-    @IsString()
-    @IsOptional()
-    updated_at?:string;
 }

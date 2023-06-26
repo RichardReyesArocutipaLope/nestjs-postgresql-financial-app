@@ -1,10 +1,10 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-
+import * as moment from 'moment';
 import * as bcrypt from 'bcrypt'
 import { LoginUserDto } from './dto/login-user.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
@@ -22,13 +22,20 @@ export class UsersService {
     private readonly jwtService: JwtService,
   ) { }
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto, user: User) {
+    const { full_name, fk_employee } = user;
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+    const audit = {
+      user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
 
     try {
       const { password, ...userData } = createUserDto
       const user = this.userRepository.create({
         ...userData,
-        password: bcrypt.hashSync(password, 10)
+        password: bcrypt.hashSync(password, 10),
+        ...audit
       })
       await this.userRepository.save(user)
       delete user.password;
@@ -84,6 +91,7 @@ export class UsersService {
 
   private handleExceptions(error: any): never {
     if (error.code === '23505') throw new BadRequestException(error.detail)
+    console.log(error)
     this.logger.error(error)
     throw new InternalServerErrorException('Unexpected error, check server logs')
   }

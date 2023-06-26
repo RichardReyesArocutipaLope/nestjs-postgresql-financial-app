@@ -50,7 +50,7 @@ export class SeedService {
     await this.seedInsertFinancialInterestRate(user);
     await this.seedInsertRoles(user);
     await this.seedInsertEmployees(user);
-    // await this.seedInsertUsers();
+    await this.seedInsertUsers(user);
     await this.seedInsertCredits(user);
     return 'SEED EXECUTED';
   }
@@ -133,21 +133,25 @@ export class SeedService {
 
   private async seedInsertEmployees(user: User) {
     const employees = initialData.employees
-    const insertPromises = [];
-    employees.forEach((item) => {
-      insertPromises.push(this.employeesService.create(item, user));
-    })
-    await Promise.all(insertPromises)
+    for (const item of employees) {
+      await this.employeesService.create(item, user);
+    }
     return true;
   }
 
   private async seedInsertRoles(user: User) {
     const roles = initialData.roles
-    const insertPromises = [];
-    roles.forEach((item) => {
-      insertPromises.push(this.rolesService.create(item, user));
-    })
-    await Promise.all(insertPromises)
+    for (const item of roles) {
+      await this.rolesService.create(item, user);
+    }
+    return true;
+  }
+
+  private async seedInsertUsers(user: User) {
+    const users = initialData.users
+    for (const item of users) {
+      await this.usersService.create(item, user);
+    }
     return true;
   }
 

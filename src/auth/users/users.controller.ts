@@ -11,14 +11,16 @@ import { UserRoleGuard } from './guards/user-role/user-role.guard';
 import { RolProtected } from './decorators/rol-protected.decorator';
 import { ValidRoles } from './interfaces/valid-roles';
 import { Auth } from './decorators';
+import { PassportModule } from '@nestjs/passport';
 
 @Controller('auth/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
   @Post('register')
-  createUser(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  @Auth(ValidRoles.administrador)
+  createUser(@Body() createUserDto: CreateUserDto, @GetUser() user: User) {
+    return this.usersService.create(createUserDto, user);
   }
 
   @Post('login')
@@ -49,21 +51,21 @@ export class UsersController {
   @UseGuards(AuthGuard(), UserRoleGuard)
   privateRoute2(
     @GetUser() user: User,
-  ){
+  ) {
     return {
-      ok:true,
+      ok: true,
       user
     }
   }
 
-  
+
   @Get('private3')
   @Auth(ValidRoles.administrador, ValidRoles.analista)
   privateRoute3(
     @GetUser() user: User,
-  ){
+  ) {
     return {
-      ok:true,
+      ok: true,
       user
     }
   }

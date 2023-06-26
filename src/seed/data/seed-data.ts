@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt'
 
 type ValidPeriodType = 'days' | 'weeks' | 'months' | 'years'
 interface SeedPeriodType {
@@ -112,6 +113,7 @@ interface SeedData {
     roles: seedRoles[],
     firsEmployee: SeedEmployees,
     firstUser: SeedUsers,
+    users: SeedUsers[],
     employees: SeedEmployees[],
     credits: SeedCredit[]
 }
@@ -232,7 +234,7 @@ export const initialData: SeedData = {
         },
     ],
 
-    firsEmployee:{
+    firsEmployee: {
         dni: 78787878,
         first_name: 'super',
         last_name: 'employee',
@@ -243,11 +245,38 @@ export const initialData: SeedData = {
         address_reference: 'superemployee',
     },
 
-    firstUser:{
+    firstUser: {
         full_name: "superusuario",
-        password: "Password123",
+        password: bcrypt.hashSync('Password123', 10),
         fk_employee: 1,
     },
+
+    users: [
+        {
+            full_name: "administrador",
+            password: "Password123",
+            fk_employee: 2,
+            fk_role: 1
+        },
+        {
+            full_name: "analista",
+            password: "Password123",
+            fk_employee: 3,
+            fk_role: 2
+        },
+        {
+            full_name: "cajero",
+            password: "Password123",
+            fk_employee: 4,
+            fk_role: 3
+        },
+        {
+            full_name: "cobrador",
+            password: "Password123",
+            fk_employee: 5,
+            fk_role: 4
+        },
+    ],
 
     credits: [
         {

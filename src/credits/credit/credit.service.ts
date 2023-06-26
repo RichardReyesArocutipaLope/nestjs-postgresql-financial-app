@@ -210,7 +210,6 @@ export class CreditService {
   }
 
   async approve(id: number, user: User) {
-    console.log(user)
     const approveCredit = await this.creditRepository.preload({
       id: id,
       state: 'AP'
