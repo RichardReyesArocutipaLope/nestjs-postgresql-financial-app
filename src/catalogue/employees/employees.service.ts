@@ -1,9 +1,11 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Employee } from './entities/employee.entity';
 import { Repository } from 'typeorm';
+import { User } from 'src/auth/users/entities/user.entity';
+import * as moment from 'moment';
 
 @Injectable()
 export class EmployeesService {
@@ -15,11 +17,20 @@ export class EmployeesService {
     private readonly employeeRepository: Repository<Employee>
   ) { }
 
-  async create(createEmployeeDto: CreateEmployeeDto) {
+  async create(createEmployeeDto: CreateEmployeeDto, user: User) {
+
+    const { full_name, fk_employee } = user;
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+    const audit = {
+      user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
 
     try {
-
-      const employee = this.employeeRepository.create(createEmployeeDto);
+      const employee = this.employeeRepository.create({
+        ...createEmployeeDto,
+        ...audit
+      });
       await this.employeeRepository.save(employee);
 
       return employee

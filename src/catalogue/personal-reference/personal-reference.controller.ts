@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PersonalReferenceService } from './personal-reference.service';
 import { CreatePersonalReferenceDto } from './dto/create-personal-reference.dto';
 import { UpdatePersonalReferenceDto } from './dto/update-personal-reference.dto';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
+import { User } from 'src/auth/users/entities/user.entity';
 
 @Controller('catalogue/personal-reference')
 export class PersonalReferenceController {
   constructor(private readonly personalReferenceService: PersonalReferenceService) {}
 
   @Post()
-  create(@Body() createPersonalReferenceDto: CreatePersonalReferenceDto) {
-    return this.personalReferenceService.create(createPersonalReferenceDto);
+  @Auth(ValidRoles.administrador, ValidRoles.analista)
+  create(@Body() createPersonalReferenceDto: CreatePersonalReferenceDto, @GetUser() user: User) {
+    return this.personalReferenceService.create(createPersonalReferenceDto, user);
   }
 
   @Get()

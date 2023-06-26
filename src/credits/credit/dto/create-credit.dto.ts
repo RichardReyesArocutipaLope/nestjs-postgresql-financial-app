@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsIn, IsInt, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsBoolean, IsIn, IsInt, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 import { CreateAvalDto } from "src/catalogue/avales/dto/create-aval.dto";
 import { CreateBusinessDto } from "src/catalogue/business/dto/create-business.dto";
 import { CreateCustomerDto } from "src/catalogue/customers/dto/create-customer.dto";
@@ -66,21 +66,4 @@ export class CreateCreditDto {
 
     @IsNumber()
     fk_period_type: number
-
-    @IsString({each:true})
-    @IsArray()
-    user_create:string[];
-
-    @IsString({each:true})
-    @IsArray()
-    @IsOptional()
-    user_update?:string[];
-
-    @IsString()
-    created_at:string;
-
-    @IsString()
-    @IsOptional()
-    updated_at?:string;
-
 }

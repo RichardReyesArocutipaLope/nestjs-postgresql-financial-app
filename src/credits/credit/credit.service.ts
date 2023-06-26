@@ -39,21 +39,27 @@ export class CreditService {
   async create(createCreditDto: CreateCreditDto, user: User) {
     try {
       const { aval, personalReference, customer, business, ...credit } = createCreditDto
+      const { full_name, fk_employee } = user;
+      if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+      const audit = {
+        user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+        created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+      }
 
-      const newBusiness = this.businessRepository.create(business)
+      const newBusiness = this.businessRepository.create({ ...business, ...audit })
       const savedBusiness = await this.businessRepository.save(newBusiness)
 
-      const newCustomer = this.customerRepository.create({ ...customer, business: savedBusiness })
+      const newCustomer = this.customerRepository.create({ ...customer, business: savedBusiness, ...audit })
       const savedCustomer = await this.customerRepository.save(newCustomer)
 
-      const newCredit = this.creditRepository.create({ ...credit, fk_customer: savedCustomer })
+      const newCredit = this.creditRepository.create({ ...credit, fk_customer: savedCustomer, ...audit })
       const savedCredit = await this.creditRepository.save(newCredit)
 
-      const newAval = this.avalRepository.create({ ...aval, fk_credit: savedCredit })
-      const savedAval = await this.avalRepository.save(newAval)
+      const newAval = this.avalRepository.create({ ...aval, fk_credit: savedCredit, ...audit })
+      await this.avalRepository.save(newAval)
 
-      const newPersonalReference = this.personalReferenceRepository.create({ ...personalReference, fk_credit: savedCredit })
-      const savedPersonalReference = await this.personalReferenceRepository.save(newPersonalReference)
+      const newPersonalReference = this.personalReferenceRepository.create({ ...personalReference, fk_credit: savedCredit, ...audit })
+      await this.personalReferenceRepository.save(newPersonalReference)
 
       return {
         Credit: savedCredit,
@@ -132,41 +138,48 @@ export class CreditService {
   }
 
   async update(id: number, updateCreditDto: UpdateCreditDto, user: User) {
+
+    const { full_name, fk_employee } = user;
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+    const audit = {
+      user_update: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
+
     const { aval, personalReference, customer, business, ...credit } = updateCreditDto
-    const updateCredit = await this.creditRepository.preload({
-      id: id,
-      ...credit
-    })
+    const updateCredit = await this.creditRepository.preload({ id: id, ...credit })
     if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
     try {
-
-      const { full_name, fk_employee } = user;
-
-      if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
-  
-      updateCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
-      updateCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
-
+      updateCredit.user_update = audit.user_update;
+      updateCredit.updated_at = audit.updated_at;
       await this.creditRepository.save(updateCredit)
 
       if (aval.id) {
         const updateAval = await this.avalRepository.preload({ ...aval })
+        updateAval.user_update = audit.user_update;
+        updateAval.updated_at = audit.updated_at;
         await this.avalRepository.save(updateAval)
       }
 
       if (personalReference.id) {
         const updateReference = await this.personalReferenceRepository.preload({ ...personalReference })
+        updateReference.user_update = audit.user_update;
+        updateReference.updated_at = audit.updated_at;
         await this.personalReferenceRepository.save(updateReference)
       }
 
       if (customer.id) {
         const updateCustomer = await this.customerRepository.preload({ ...customer })
+        updateCustomer.user_update = audit.user_update;
+        updateCustomer.updated_at = audit.updated_at;
         await this.customerRepository.save(updateCustomer)
       }
 
       if (business.id) {
         const updateBusiness = await this.businessRepository.preload({ ...business })
+        updateBusiness.user_update = audit.user_update;
+        updateBusiness.updated_at = audit.updated_at;
         await this.businessRepository.save(updateBusiness)
       }
 
@@ -189,7 +202,7 @@ export class CreditService {
     if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
 
     removeCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
-    removeCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
+    removeCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss');
 
     await this.creditRepository.save(removeCredit)
 
@@ -197,7 +210,7 @@ export class CreditService {
   }
 
   async approve(id: number, user: User) {
-
+    console.log(user)
     const approveCredit = await this.creditRepository.preload({
       id: id,
       state: 'AP'
@@ -227,7 +240,7 @@ export class CreditService {
     if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
 
     disburseCredit.user_update = [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`];
-    disburseCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss'); 
+    disburseCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss');
 
     await this.creditRepository.save(disburseCredit)
 

@@ -4,11 +4,9 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from './entities/customer.entity';
 import { Repository } from 'typeorm';
-import { Business } from '../business/entities/business.entity';
-import { Credit } from 'src/credits/credit/entities/credit.entity';
-import { Aval } from '../avales/entities/aval.entity';
-import { PersonalReference } from '../personal-reference/entities/personal-reference.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import * as moment from 'moment';
+import { User } from 'src/auth/users/entities/user.entity';
 
 @Injectable()
 export class CustomersService {
@@ -20,9 +18,17 @@ export class CustomersService {
     private readonly customerRepository: Repository<Customer>,
 
   ) { }
-  async create(createCustomerDto: CreateCustomerDto) {
+  async create(createCustomerDto: CreateCustomerDto, user: User) {
+
+    const { full_name, fk_employee } = user;
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+    const audit = {
+      user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
+
     try {
-  
+
     } catch (error) {
       console.log(error)
       throw new InternalServerErrorException('Ayuda')

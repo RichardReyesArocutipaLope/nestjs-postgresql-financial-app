@@ -1,9 +1,11 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { CreateHousingTypeDto } from './dto/create-housing-type.dto';
 import { UpdateHousingTypeDto } from './dto/update-housing-type.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HousingType } from './entities/housing-type.entity';
 import { Repository } from 'typeorm';
+import { User } from 'src/auth/users/entities/user.entity';
+import * as moment from 'moment';
 
 @Injectable()
 export class HousingTypeService {
@@ -15,11 +17,19 @@ export class HousingTypeService {
     private readonly housingTypeRepository: Repository<HousingType>
   ) { }
 
-  async create(createHousingTypeDto: CreateHousingTypeDto) {
+  async create(createHousingTypeDto: CreateHousingTypeDto, user: User) {
+    const { full_name, fk_employee } = user;
+    if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
+    const audit = {
+      user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
 
     try {
-
-      const housingType = this.housingTypeRepository.create(createHousingTypeDto)
+      const housingType = this.housingTypeRepository.create({
+        ...createHousingTypeDto,
+        ...audit
+      })
       await this.housingTypeRepository.save(housingType)
       return housingType
 
@@ -50,7 +60,7 @@ export class HousingTypeService {
     this.logger.error(error)
     throw new InternalServerErrorException('Unexpected error, check server logs')
   }
-  
+
   async deleteAllHousingType() {
     const query = this.housingTypeRepository.createQueryBuilder('housingType')
     try {

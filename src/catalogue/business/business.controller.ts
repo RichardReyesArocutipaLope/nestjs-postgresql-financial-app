@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { BusinessService } from './business.service';
 import { CreateBusinessDto } from './dto/create-business.dto';
 import { UpdateBusinessDto } from './dto/update-business.dto';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { User } from 'src/auth/users/entities/user.entity';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
 
 @Controller('catalogue/business')
 export class BusinessController {
   constructor(private readonly businessService: BusinessService) {}
 
   @Post()
-  create(@Body() createBusinessDto: CreateBusinessDto) {
-    return this.businessService.create(createBusinessDto);
+  @Auth(ValidRoles.administrador, ValidRoles.analista)
+  create(@Body() createBusinessDto: CreateBusinessDto, @GetUser() user: User) {
+    return this.businessService.create(createBusinessDto, user);
   }
 
   @Get()

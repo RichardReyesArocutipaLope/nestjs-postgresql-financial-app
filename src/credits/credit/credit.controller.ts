@@ -14,10 +14,7 @@ export class CreditController {
 
   @Post()
   @Auth(ValidRoles.analista)
-  create(
-    @Body() createCreditDto: CreateCreditDto,
-    @GetUser() user: User,
-  ) {
+  create( @Body() createCreditDto: CreateCreditDto, @GetUser() user: User) {
     return this.creditsService.create(createCreditDto, user);
   }
 
@@ -35,10 +32,7 @@ export class CreditController {
 
   @Patch(':id')
   @Auth(ValidRoles.analista)
-  update(
-    @Param('id') id: string, @Body() updateCreditDto: UpdateCreditDto,
-    @GetUser() user: User,
-    ) {
+  update( @Param('id') id: string, @Body() updateCreditDto: UpdateCreditDto, @GetUser() user: User ) {
     return this.creditsService.update(+id, updateCreditDto, user);
   }
 

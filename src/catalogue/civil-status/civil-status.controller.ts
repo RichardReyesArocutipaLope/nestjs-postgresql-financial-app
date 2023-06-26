@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CivilStatusService } from './civil-status.service';
 import { CreateCivilStatusDto } from './dto/create-civil-status.dto';
 import { UpdateCivilStatusDto } from './dto/update-civil-status.dto';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { User } from 'src/auth/users/entities/user.entity';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
 
 @Controller('catalogue/civil-status')
 export class CivilStatusController {
-  constructor(private readonly civilStatusService: CivilStatusService) {}
+  constructor(private readonly civilStatusService: CivilStatusService) { }
 
   @Post()
-  create(@Body() createCivilStatusDto: CreateCivilStatusDto) {
-    return this.civilStatusService.create(createCivilStatusDto);
+  @Auth(ValidRoles.administrador)
+  create(@Body() createCivilStatusDto: CreateCivilStatusDto, @GetUser() user: User) {
+    return this.civilStatusService.create(createCivilStatusDto, user);
   }
 
   @Get()

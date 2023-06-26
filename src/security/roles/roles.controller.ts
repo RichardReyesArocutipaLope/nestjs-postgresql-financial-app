@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { User } from 'src/auth/users/entities/user.entity';
 
 @Controller('security/roles')
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}
 
   @Post()
-  create(@Body() createRoleDto: CreateRoleDto) {
-    return this.rolesService.create(createRoleDto);
+  @Auth(ValidRoles.administrador)
+  create(@Body() createRoleDto: CreateRoleDto, @GetUser() user: User) {
+    return this.rolesService.create(createRoleDto, user);
   }
 
   @Get()

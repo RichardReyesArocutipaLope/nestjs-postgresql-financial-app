@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { AvalesService } from './avales.service';
 import { CreateAvalDto } from './dto/create-aval.dto';
 import { UpdateAvalDto } from './dto/update-aval.dto';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { User } from 'src/auth/users/entities/user.entity';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
 
 @Controller('catalogue/avales')
 export class AvalesController {
-  constructor(private readonly avalesService: AvalesService) {}
+  constructor(private readonly avalesService: AvalesService) { }
 
   @Post()
-  create(@Body() createAvaleDto: CreateAvalDto) {
-    return this.avalesService.create(createAvaleDto);
+  @Auth(ValidRoles.administrador, ValidRoles.analista)
+  create(@Body() createAvaleDto: CreateAvalDto, @GetUser() user: User) {
+    return this.avalesService.create(createAvaleDto, user);
   }
 
   @Get()

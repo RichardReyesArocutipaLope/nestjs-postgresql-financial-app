@@ -2,15 +2,11 @@
 type ValidPeriodType = 'days' | 'weeks' | 'months' | 'years'
 interface SeedPeriodType {
     name: ValidPeriodType;
-    user_create: string;
-    created_at: string;
 }
 
 type ValidFinancialInterestRate = 'simple' | 'compuesto'
 interface SeedFinancialInterestRate {
     name: ValidFinancialInterestRate;
-    user_create: string;
-    created_at: string;
 }
 
 interface SeedEmployees {
@@ -22,28 +18,20 @@ interface SeedEmployees {
     email: string;
     address: string;
     address_reference: string;
-    user_create: string;
-    created_at: string;
 }
 
 interface seedRoles {
     name: string;
-    user_create: string;
-    created_at: string;
 }
 
 type ValidHousingType = 'propia' | 'alquilada' | 'cedida' | 'otra';
 interface SeedHousingType {
     name: ValidHousingType
-    user_create: string;
-    created_at: string;
 }
 
 type ValidCivilStatus = 'soltero' | 'casado' | 'viudo' | 'divorciado'
 interface SeedCivilStatus {
     name: ValidCivilStatus;
-    user_create: string;
-    created_at: string;
 }
 
 
@@ -59,8 +47,6 @@ interface SeedBusiness {
     inventory_value: number
     have_property_documents: boolean
     observation: string
-    user_create: string
-    created_at: string
 }
 interface SeedAval {
     dni: number;
@@ -69,8 +55,6 @@ interface SeedAval {
     phone: string;
     email: string;
     address: string;
-    user_create: string;
-    created_at: string;
 }
 interface SeedRef {
     dni: number;
@@ -79,8 +63,6 @@ interface SeedRef {
     phone: string;
     email: string;
     address: string;
-    user_create: string;
-    created_at: string;
     relationship: string;
 }
 interface SeedCustomers {
@@ -94,8 +76,6 @@ interface SeedCustomers {
     address_reference: string
     fk_civil_status: number
     fk_housing_type: number
-    user_create: string
-    created_at: string
     observation: string
     is_active: boolean
 }
@@ -106,8 +86,6 @@ interface SeedCredit {
     period: number
     interest_rate: number
     state: string
-    user_create: string
-    created_at: string
     fk_employee_cobrador: number
     fk_employee_analista: number
     fk_financial_interest: number
@@ -118,7 +96,12 @@ interface SeedCredit {
     business: SeedBusiness;
 }
 
-
+interface SeedUsers {
+    full_name: string,
+    password: string,
+    fk_employee: number,
+    fk_role?: number,
+}
 
 
 interface SeedData {
@@ -127,6 +110,8 @@ interface SeedData {
     housingType: SeedHousingType[],
     civilStatus: SeedCivilStatus[],
     roles: seedRoles[],
+    firsEmployee: SeedEmployees,
+    firstUser: SeedUsers,
     employees: SeedEmployees[],
     credits: SeedCredit[]
 }
@@ -137,83 +122,55 @@ export const initialData: SeedData = {
 
     periodType: [
         {
-            name: 'days',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'days'
         },
         {
-            name: 'weeks',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'weeks'
         },
         {
-            name: 'months',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'months'
         },
         {
-            name: 'years',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'years'
         },
     ],
 
     financialInterestRate: [
         {
-            name: 'simple',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'simple'
         },
         {
-            name: 'compuesto',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'compuesto'
         },
     ],
 
     housingType: [
         {
-            name: 'propia',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'propia'
         },
         {
-            name: 'alquilada',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'alquilada'
         },
         {
-            name: 'cedida',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'cedida'
         },
         {
-            name: 'otra',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'otra'
         },
     ],
 
     civilStatus: [
         {
-            name: 'soltero',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'soltero'
         },
         {
-            name: 'casado',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'casado'
         },
         {
-            name: 'viudo',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'viudo'
         },
         {
-            name: 'divorciado',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
+            name: 'divorciado'
         },
     ],
     employees: [
@@ -226,8 +183,6 @@ export const initialData: SeedData = {
             email: 'richardreyesarocutipalope@gmail.com',
             address: 'La perla MZ 7 LT 21',
             address_reference: 'atras del local comunal los florales',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             dni: 71113340,
@@ -238,8 +193,6 @@ export const initialData: SeedData = {
             email: 'kheyvin@gmail.com',
             address: 'unjbg',
             address_reference: 'esis',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             dni: 71223340,
@@ -250,8 +203,6 @@ export const initialData: SeedData = {
             email: 'rolando@gmail.com',
             address: 'unjbg',
             address_reference: 'esis',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             dni: 71333340,
@@ -262,8 +213,6 @@ export const initialData: SeedData = {
             email: 'victor@gmail.com',
             address: 'unjbg',
             address_reference: 'esis',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
     ],
 
@@ -271,25 +220,34 @@ export const initialData: SeedData = {
     roles: [
         {
             name: 'administrador',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             name: 'analista',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             name: 'cajero',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
         {
             name: 'cobrador',
-            user_create: 'richard',
-            created_at: '2023-06-19 10:23:54'
         },
     ],
+
+    firsEmployee:{
+        dni: 78787878,
+        first_name: 'super',
+        last_name: 'employee',
+        phone: '+77777777777',
+        phone2: '+77777777777',
+        email: 'superemployee@gmail.com',
+        address: 'superemployee',
+        address_reference: 'superemployee',
+    },
+
+    firstUser:{
+        full_name: "superusuario",
+        password: "Password123",
+        fk_employee: 1,
+    },
 
     credits: [
         {
@@ -298,8 +256,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -311,8 +267,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 111",
                 email: "aval111@gmail.com",
                 address: "address 111",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 11111111,
@@ -322,8 +276,6 @@ export const initialData: SeedData = {
                 email: "reference111@gmail.com",
                 address: "address 111",
                 relationship: "relationship111",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 11111111,
@@ -336,8 +288,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 111",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 111",
                 is_active: false,
             },
@@ -351,8 +301,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 111",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -362,8 +310,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -375,8 +321,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 333",
                 email: "aval333@gmail.com",
                 address: "address 333",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 33333333,
@@ -386,8 +330,6 @@ export const initialData: SeedData = {
                 email: "reference333@gmail.com",
                 address: "address 333",
                 relationship: "relationship333",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 33333333,
@@ -400,8 +342,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 333",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 333",
                 is_active: false,
             },
@@ -415,8 +355,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 333",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -428,8 +366,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -441,8 +377,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 444",
                 email: "aval444@gmail.com",
                 address: "address 444",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 44444444,
@@ -452,8 +386,6 @@ export const initialData: SeedData = {
                 email: "reference444@gmail.com",
                 address: "address 444",
                 relationship: "relationship444",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 44444444,
@@ -466,8 +398,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 444",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 444",
                 is_active: false,
             },
@@ -481,8 +411,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 444",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -494,8 +422,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -507,8 +433,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 555",
                 email: "aval555@gmail.com",
                 address: "address 555",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 55555555,
@@ -518,8 +442,6 @@ export const initialData: SeedData = {
                 email: "reference555@gmail.com",
                 address: "address 555",
                 relationship: "relationship555",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 55555555,
@@ -532,8 +454,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 555",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 555",
                 is_active: false,
             },
@@ -547,8 +467,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 555",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -560,8 +478,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -573,8 +489,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 666",
                 email: "aval666@gmail.com",
                 address: "address 666",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 66666666,
@@ -584,8 +498,6 @@ export const initialData: SeedData = {
                 email: "reference666@gmail.com",
                 address: "address 666",
                 relationship: "relationship666",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 66666666,
@@ -598,8 +510,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 666",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 666",
                 is_active: false,
             },
@@ -613,8 +523,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 666",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -626,8 +534,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -639,8 +545,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 777",
                 email: "aval777@gmail.com",
                 address: "address 777",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 77777777,
@@ -650,8 +554,6 @@ export const initialData: SeedData = {
                 email: "reference777@gmail.com",
                 address: "address 777",
                 relationship: "relationship777",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 77777777,
@@ -664,8 +566,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 777",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 777",
                 is_active: false,
             },
@@ -679,12 +579,8 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 777",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
-
-
 
 
         {
@@ -693,8 +589,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -706,8 +600,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 888",
                 email: "aval888@gmail.com",
                 address: "address 888",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 88888888,
@@ -717,8 +609,6 @@ export const initialData: SeedData = {
                 email: "reference888@gmail.com",
                 address: "address 888",
                 relationship: "relationship888",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 88888888,
@@ -731,8 +621,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 888",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 888",
                 is_active: false,
             },
@@ -746,8 +634,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 888",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -759,8 +645,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -772,8 +656,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 999",
                 email: "aval999@gmail.com",
                 address: "address 999",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 99999999,
@@ -783,8 +665,6 @@ export const initialData: SeedData = {
                 email: "reference999@gmail.com",
                 address: "address 999",
                 relationship: "relationship999",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 99999999,
@@ -797,8 +677,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 999",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 999",
                 is_active: false,
             },
@@ -812,8 +690,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 999",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -825,8 +701,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -838,8 +712,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 101",
                 email: "aval101@gmail.com",
                 address: "address 101",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 10101010,
@@ -849,8 +721,6 @@ export const initialData: SeedData = {
                 email: "reference101@gmail.com",
                 address: "address 101",
                 relationship: "relationship101",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 10101010,
@@ -863,8 +733,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 101",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 101",
                 is_active: false,
             },
@@ -878,8 +746,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 101",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -891,8 +757,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -904,8 +768,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 110",
                 email: "aval110@gmail.com",
                 address: "address 110",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 11001100,
@@ -915,8 +777,6 @@ export const initialData: SeedData = {
                 email: "reference110@gmail.com",
                 address: "address 110",
                 relationship: "relationship110",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 11001100,
@@ -929,8 +789,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 110",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 110",
                 is_active: false,
             },
@@ -944,8 +802,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 110",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -957,8 +813,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -970,8 +824,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 121",
                 email: "aval121@gmail.com",
                 address: "address 121",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 12121212,
@@ -981,8 +833,6 @@ export const initialData: SeedData = {
                 email: "reference121@gmail.com",
                 address: "address 121",
                 relationship: "relationship121",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 12121212,
@@ -995,8 +845,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 121",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 121",
                 is_active: false,
             },
@@ -1010,8 +858,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 121",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -1022,8 +868,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1035,8 +879,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 131",
                 email: "aval131@gmail.com",
                 address: "address 131",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 13131313,
@@ -1046,8 +888,6 @@ export const initialData: SeedData = {
                 email: "reference131@gmail.com",
                 address: "address 131",
                 relationship: "relationship131",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 13131313,
@@ -1060,8 +900,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 131",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 131",
                 is_active: false,
             },
@@ -1075,8 +913,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 131",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -1087,8 +923,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1100,8 +934,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 141",
                 email: "aval141@gmail.com",
                 address: "address 141",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 14141414,
@@ -1111,8 +943,6 @@ export const initialData: SeedData = {
                 email: "reference141@gmail.com",
                 address: "address 141",
                 relationship: "relationship141",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 14141414,
@@ -1125,8 +955,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 141",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 141",
                 is_active: false,
             },
@@ -1140,8 +968,7 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 141",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
+
             },
         },
 
@@ -1153,8 +980,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1166,8 +991,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 151",
                 email: "aval151@gmail.com",
                 address: "address 151",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 15151515,
@@ -1177,8 +1000,6 @@ export const initialData: SeedData = {
                 email: "reference151@gmail.com",
                 address: "address 151",
                 relationship: "relationship151",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 15151515,
@@ -1191,8 +1012,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 151",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 151",
                 is_active: false,
             },
@@ -1206,8 +1025,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 151",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -1219,8 +1036,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1232,8 +1047,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 161",
                 email: "aval161@gmail.com",
                 address: "address 161",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 16161616,
@@ -1243,8 +1056,6 @@ export const initialData: SeedData = {
                 email: "reference161@gmail.com",
                 address: "address 161",
                 relationship: "relationship161",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 16161616,
@@ -1257,8 +1068,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 161",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 161",
                 is_active: false,
             },
@@ -1272,8 +1081,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 161",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -1284,8 +1091,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1297,8 +1102,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 171",
                 email: "aval171@gmail.com",
                 address: "address 171",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 17171717,
@@ -1308,8 +1111,6 @@ export const initialData: SeedData = {
                 email: "reference171@gmail.com",
                 address: "address 171",
                 relationship: "relationship171",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 17171717,
@@ -1322,8 +1123,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 171",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 171",
                 is_active: false,
             },
@@ -1337,8 +1136,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 171",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
 
@@ -1350,8 +1147,6 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 5.56,
             state: "NU",
-            user_create: "richard",
-            created_at: "2023-06-19 10:23:54",
             fk_employee_cobrador: 2,
             fk_employee_analista: 1,
             fk_financial_interest: 1,
@@ -1363,8 +1158,6 @@ export const initialData: SeedData = {
                 phone: "+51 925 072 181",
                 email: "aval181@gmail.com",
                 address: "address 181",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             personalReference: {
                 dni: 18181818,
@@ -1374,8 +1167,6 @@ export const initialData: SeedData = {
                 email: "reference181@gmail.com",
                 address: "address 181",
                 relationship: "relationship181",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
             customer: {
                 dni: 18181818,
@@ -1388,8 +1179,6 @@ export const initialData: SeedData = {
                 address_reference: "referencia direccion 181",
                 fk_civil_status: 2,
                 fk_housing_type: 3,
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54",
                 observation: "observacion 181",
                 is_active: false,
             },
@@ -1403,8 +1192,6 @@ export const initialData: SeedData = {
                 inventory_value: 85600.00,
                 have_property_documents: true,
                 observation: "observation 181",
-                user_create: "richard",
-                created_at: "2023-06-19 10:23:54"
             },
         },
     ]

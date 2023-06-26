@@ -2,14 +2,18 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PeriodTypeService } from './period-type.service';
 import { CreatePeriodTypeDto } from './dto/create-period-type.dto';
 import { UpdatePeriodTypeDto } from './dto/update-period-type.dto';
+import { ValidRoles } from 'src/auth/users/interfaces/valid-roles';
+import { Auth, GetUser } from 'src/auth/users/decorators';
+import { User } from 'src/auth/users/entities/user.entity';
 
 @Controller('credits/period-type')
 export class PeriodTypeController {
-  constructor(private readonly periodTypeService: PeriodTypeService) {}
+  constructor(private readonly periodTypeService: PeriodTypeService) { }
 
   @Post()
-  create(@Body() createPeriodTypeDto: CreatePeriodTypeDto) {
-    return this.periodTypeService.create(createPeriodTypeDto);
+  @Auth(ValidRoles.administrador)
+  create(@Body() createPeriodTypeDto: CreatePeriodTypeDto, @GetUser() user: User) {
+    return this.periodTypeService.create(createPeriodTypeDto, user);
   }
 
   @Get()
