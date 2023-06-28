@@ -32,6 +32,7 @@ import { CommonModule } from './common/common.module';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
+      dropSchema:true
     }),
     SeedModule,
     CatalogueModule,
