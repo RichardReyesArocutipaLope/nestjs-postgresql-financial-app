@@ -18,7 +18,7 @@ export class CreditController {
     return this.creditsService.create(createCreditDto, user);
   }
 
-  @Get()
+  @Post('filter')
   @Auth(ValidRoles.analista, ValidRoles.administrador, ValidRoles.cajero)
   findAll(@Query() paginationDto: PaginationDto, @Body() filterCreditDto: FilterCreditDto) {
     return this.creditsService.findAll(paginationDto, filterCreditDto);
