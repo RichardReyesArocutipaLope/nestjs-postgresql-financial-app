@@ -128,7 +128,15 @@ export class CreditService {
       .limit(limit)
       .getRawMany();
 
-    return credits;
+    const activeCredits = await this.creditRepository
+      .createQueryBuilder('credit')
+      .where("credit.is_active = :is_active", { is_active: true })
+      .getCount();
+
+    return {
+      activeCredits,
+      credits
+    };
   }
 
   async findOne(id: number) {
