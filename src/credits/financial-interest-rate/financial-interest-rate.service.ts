@@ -10,7 +10,7 @@ import { User } from 'src/auth/users/entities/user.entity';
 @Injectable()
 export class FinancialInterestRateService {
 
-  private readonly logger= new Logger('FinancialInterestRateService')
+  private readonly logger = new Logger('FinancialInterestRateService')
 
   constructor(
     @InjectRepository(FinancialInterestRate)
@@ -18,7 +18,7 @@ export class FinancialInterestRateService {
   ) { }
 
   async create(createFinancialInterestRateDto: CreateFinancialInterestRateDto, user: User) {
-    
+
     const { full_name, fk_employee } = user;
     if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
     const audit = {
@@ -41,7 +41,9 @@ export class FinancialInterestRateService {
   }
 
   findAll() {
-    return `This action returns all financialInterestRate`;
+    return this.financialInterestRateRepository.find({
+      where: { is_active: true }
+    })
   }
 
   findOne(id: number) {
@@ -61,7 +63,7 @@ export class FinancialInterestRateService {
     this.logger.error(error)
     throw new InternalServerErrorException('Unexpected error, check server logs')
   }
-  
+
   async deleteAllFinancialInterestRate() {
     const query = this.financialInterestRateRepository.createQueryBuilder('financialInterestRate')
     try {

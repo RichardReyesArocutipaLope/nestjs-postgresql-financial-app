@@ -17,6 +17,7 @@ export class FinancialInterestRateController {
   }
 
   @Get()
+  @Auth()
   findAll() {
     return this.financialInterestRateService.findAll();
   }

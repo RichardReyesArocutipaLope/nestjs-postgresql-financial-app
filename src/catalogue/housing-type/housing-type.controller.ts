@@ -17,6 +17,7 @@ export class HousingTypeController {
   }
 
   @Get()
+  @Auth()
   findAll() {
     return this.housingTypeService.findAll();
   }

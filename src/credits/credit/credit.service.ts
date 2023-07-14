@@ -82,7 +82,7 @@ export class CreditService {
     console.log(filterCreditDto)
 
     const queryBuilder = this.creditRepository.createQueryBuilder('credit');
-    const credits = await queryBuilder.select([
+    const queryCredits = queryBuilder.select([
       "credit.id AS id_credit",
       "CONCAT(customer.first_name, ' ', customer.last_name) AS cliente",
       "customer.dni AS dni",
@@ -103,8 +103,8 @@ export class CreditService {
       }))
       .andWhere(new Brackets((qb2) => {
         qb2.where("customer.dni=:dni", { dni: +search_value, })
-          .orWhere("LOWER(customer.first_name) LIKE :client ", { client: `%${search_value}%` })
-          .orWhere("LOWER(customer.last_name) LIKE :client ", { client: `%${search_value}%` })
+          .orWhere("LOWER(customer.first_name) LIKE :client ", { client: `%${search_value.toLowerCase()}%` })
+          .orWhere("LOWER(customer.last_name) LIKE :client ", { client: `%${search_value.toLowerCase()}%` })
           .orWhere("cast(:term as text) is null ", { term: search_value })
       }))
       .andWhere(new Brackets((qb3) => {
@@ -126,15 +126,20 @@ export class CreditService {
       .orderBy("credit.id", "ASC")
       .offset(offset)
       .limit(limit)
-      .getRawMany();
+    // .getSql();
+    // .getRawMany();
+    // .getCount()
 
-    const activeCredits = await this.creditRepository
-      .createQueryBuilder('credit')
-      .where("credit.is_active = :is_active", { is_active: true })
-      .getCount();
+    const countCredits = await queryCredits.getCount();
+    const credits = await queryCredits.getRawMany();
+
+    // const activeCredits = await this.creditRepository
+    //   .createQueryBuilder('credit')
+    //   .where("credit.is_active = :is_active", { is_active: true })
+    //   .getCount();
 
     return {
-      activeCredits,
+      countCredits,
       credits
     };
   }

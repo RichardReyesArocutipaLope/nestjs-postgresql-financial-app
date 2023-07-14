@@ -40,7 +40,9 @@ export class CivilStatusService {
   }
 
   findAll() {
-    return `This action returns all civilStatus`;
+    return this.civiStatusRepository.find({
+      where: { is_active: true }
+    })
   }
 
   findOne(id: number) {

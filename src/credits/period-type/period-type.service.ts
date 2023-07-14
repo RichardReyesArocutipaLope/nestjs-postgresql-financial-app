@@ -40,7 +40,9 @@ export class PeriodTypeService {
   }
 
   findAll() {
-    return `This action returns all periodType`;
+    return this.periodTypeRepository.find({
+      where: { is_active: true }
+    })
   }
 
   findOne(id: number) {

@@ -8,7 +8,7 @@ import { User } from 'src/auth/users/entities/user.entity';
 
 @Controller('security/roles')
 export class RolesController {
-  constructor(private readonly rolesService: RolesService) {}
+  constructor(private readonly rolesService: RolesService) { }
 
   @Post()
   @Auth(ValidRoles.administrador)
@@ -17,11 +17,19 @@ export class RolesController {
   }
 
   @Get()
+  @Auth()
   findAll() {
     return this.rolesService.findAll();
   }
 
+  @Get('name/:name')
+  @Auth()
+  findOneByName(@Param('name') name: string) {
+    return this.rolesService.findOneByName(name);
+  }
+
   @Get(':id')
+  @Auth()
   findOne(@Param('id') id: string) {
     return this.rolesService.findOne(+id);
   }

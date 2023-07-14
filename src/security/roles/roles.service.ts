@@ -15,7 +15,7 @@ export class RolesService {
   constructor(
     @InjectRepository(Role)
     private readonly rolesRepository: Repository<Role>
-  ){}
+  ) { }
 
   async create(createRoleDto: CreateRoleDto, user: User) {
 
@@ -27,7 +27,7 @@ export class RolesService {
     }
 
     try {
-      const rol= this.rolesRepository.create({
+      const rol = this.rolesRepository.create({
         ...createRoleDto,
         ...audit
       })
@@ -39,9 +39,24 @@ export class RolesService {
     }
   }
 
+
   findAll() {
-    return `This action returns all roles`;
+    return this.rolesRepository.find({
+      relations: {
+        user: true,
+      }
+    })
   }
+
+  findOneByName(name: string) {
+    return this.rolesRepository.findOne({
+      where: { name },
+      relations: {
+        user: true,
+      }
+    })
+  }
+
 
   findOne(id: number) {
     return `This action returns a #${id} role`;
@@ -60,7 +75,7 @@ export class RolesService {
     this.logger.error(error)
     throw new InternalServerErrorException('Unexpected error, check server logs')
   }
-  
+
   async deleteAllRoles() {
     const query = this.rolesRepository.createQueryBuilder('deleteAllRoles')
     try {

@@ -40,7 +40,9 @@ export class HousingTypeService {
   }
 
   findAll() {
-    return `This action returns all housingType`;
+    return this.housingTypeRepository.find({
+      where: { is_active: true }
+    })
   }
 
   findOne(id: number) {

@@ -17,7 +17,7 @@ export class User {
 
     @Column({
         type: 'text',
-        select:false
+        select: false
     })
     password: string;
 
@@ -31,6 +31,7 @@ export class User {
     @ManyToOne(
         () => Employee,
         (employee) => employee.user,
+        { eager: true }
     )
     fk_employee: Employee | number
 
@@ -71,12 +72,12 @@ export class User {
     updated_at: string;
 
     @BeforeInsert()
-    checkFullNameBeforeInsert(){
-        this.full_name=this.full_name.toLowerCase().trim();
+    checkFullNameBeforeInsert() {
+        this.full_name = this.full_name.toLowerCase().trim();
     }
 
     @BeforeUpdate()
-    checkFullNameBeforeUpdate(){
-        this.full_name=this.full_name.toLowerCase().trim();
+    checkFullNameBeforeUpdate() {
+        this.full_name = this.full_name.toLowerCase().trim();
     }
 }

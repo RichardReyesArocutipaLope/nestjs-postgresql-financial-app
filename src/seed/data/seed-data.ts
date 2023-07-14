@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt'
 
-type ValidPeriodType = 'days' | 'weeks' | 'months' | 'years'
+type ValidPeriodType = 'días' | 'semanas' | 'meses' | 'años'
 interface SeedPeriodType {
     name: ValidPeriodType;
 }
@@ -124,16 +124,16 @@ export const initialData: SeedData = {
 
     periodType: [
         {
-            name: 'days'
+            name: 'días'
         },
         {
-            name: 'weeks'
+            name: 'semanas'
         },
         {
-            name: 'months'
+            name: 'meses'
         },
         {
-            name: 'years'
+            name: 'años'
         },
     ],
 
@@ -216,6 +216,46 @@ export const initialData: SeedData = {
             address: 'unjbg',
             address_reference: 'esis',
         },
+        {
+            dni: 34237645,
+            first_name: 'Jean Carlo',
+            last_name: 'Gómez Condori',
+            phone: '+51 345 014 274',
+            phone2: '+51 765 014 274',
+            email: 'jeancarlo@gmail.com',
+            address: 'unjbg',
+            address_reference: 'esis',
+        },
+        {
+            dni: 87457629,
+            first_name: 'Juan Alberto',
+            last_name: 'Flores Pari,',
+            phone: '+51 655 014 274',
+            phone2: '+51 472 014 274',
+            email: 'alberto@gmail.com',
+            address: 'unjbg',
+            address_reference: 'esis',
+        },
+        {
+            dni: 65683674,
+            first_name: 'Elio Yasmani',
+            last_name: 'Ccama Ccama',
+            phone: '+51 955 014 274',
+            phone2: '+51 456 014 274',
+            email: 'elio@gmail.com',
+            address: 'unjbg',
+            address_reference: 'esis',
+        },
+        {
+            dni: 72849590,
+            first_name: 'Juan Luis',
+            last_name: 'Condori Flores',
+            phone: '+51 904 483 375',
+            phone2: '+51 683 014 567',
+            email: 'juan@gmail.com',
+            address: 'unjbg',
+            address_reference: 'esis',
+        },
     ],
 
 
@@ -265,15 +305,39 @@ export const initialData: SeedData = {
             fk_role: 2
         },
         {
-            full_name: "cajero",
+            full_name: "analista2",
             password: "Password123",
             fk_employee: 4,
+            fk_role: 2
+        },
+        {
+            full_name: "analista3",
+            password: "Password123",
+            fk_employee: 5,
+            fk_role: 2
+        },
+        {
+            full_name: "cajero",
+            password: "Password123",
+            fk_employee: 6,
             fk_role: 3
         },
         {
             full_name: "cobrador",
             password: "Password123",
-            fk_employee: 5,
+            fk_employee: 7,
+            fk_role: 4
+        },
+        {
+            full_name: "cobrador2",
+            password: "Password123",
+            fk_employee: 8,
+            fk_role: 4
+        },
+        {
+            full_name: "cobrador3",
+            password: "Password123",
+            fk_employee: 9,
             fk_role: 4
         },
     ],
@@ -286,7 +350,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 11.05,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
@@ -339,8 +403,8 @@ export const initialData: SeedData = {
             period: 12,
             interest_rate: 19.71,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -392,8 +456,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 19.8,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -445,8 +509,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 15.93,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -498,7 +562,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 14.15,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 8,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
@@ -551,8 +615,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 17.04,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -604,8 +668,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 15.89,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -657,7 +721,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 8.5,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
@@ -710,8 +774,8 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 8.01,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -763,8 +827,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 2.64,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -816,7 +880,7 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 12.25,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
@@ -869,8 +933,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 2.42,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -922,8 +986,8 @@ export const initialData: SeedData = {
             period: 12,
             interest_rate: 2.3,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -975,7 +1039,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 8.29,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
@@ -1028,8 +1092,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 10.18,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -1081,8 +1145,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 18.88,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -1134,8 +1198,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 5.58,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -1187,8 +1251,8 @@ export const initialData: SeedData = {
             period: 12,
             interest_rate: 18.03,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -1240,8 +1304,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 2.48,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -1293,7 +1357,7 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 3.75,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 9,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
@@ -1346,8 +1410,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 19.16,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -1399,8 +1463,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 2.14,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -1452,7 +1516,7 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 14.3,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
@@ -1505,7 +1569,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 11.37,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
@@ -1558,7 +1622,7 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 18.74,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 8,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
@@ -1611,7 +1675,7 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 19.45,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 8,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
@@ -1664,7 +1728,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 3.33,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 9,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
@@ -1717,7 +1781,7 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 7.77,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 9,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
@@ -1770,8 +1834,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 14.45,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -1823,8 +1887,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 18.39,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -1876,8 +1940,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 3.44,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -1929,8 +1993,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 16.52,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -1982,8 +2046,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 17.26,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -2035,8 +2099,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 9.05,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -2088,8 +2152,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 10.56,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -2141,8 +2205,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 13.09,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -2194,7 +2258,7 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 11.94,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 7,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
@@ -2247,8 +2311,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 10,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -2300,8 +2364,8 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 3.61,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 9,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -2353,8 +2417,8 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 10.26,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
             aval: {
@@ -2406,8 +2470,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 17.53,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -2459,8 +2523,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 19.96,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -2512,8 +2576,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 9.65,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
             aval: {
@@ -2565,8 +2629,8 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 2.79,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -2618,7 +2682,7 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 2.92,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 9,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
@@ -2671,7 +2735,7 @@ export const initialData: SeedData = {
             period: 13,
             interest_rate: 14.87,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 9,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
@@ -2724,8 +2788,8 @@ export const initialData: SeedData = {
             period: 14,
             interest_rate: 2.58,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
             aval: {
@@ -2777,8 +2841,8 @@ export const initialData: SeedData = {
             period: 15,
             interest_rate: 11.65,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 8,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -2830,8 +2894,8 @@ export const initialData: SeedData = {
             period: 11,
             interest_rate: 15.62,
             state: "NU",
-            fk_employee_cobrador: 5,
-            fk_employee_analista: 3,
+            fk_employee_cobrador: 7,
+            fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
             aval: {
@@ -2883,7 +2947,7 @@ export const initialData: SeedData = {
             period: 10,
             interest_rate: 12.9,
             state: "NU",
-            fk_employee_cobrador: 5,
+            fk_employee_cobrador: 8,
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,

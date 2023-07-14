@@ -17,6 +17,7 @@ export class PeriodTypeController {
   }
 
   @Get()
+  @Auth()
   findAll() {
     return this.periodTypeService.findAll();
   }

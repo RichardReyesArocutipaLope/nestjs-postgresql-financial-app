@@ -17,6 +17,7 @@ export class CivilStatusController {
   }
 
   @Get()
+  @Auth()
   findAll() {
     return this.civilStatusService.findAll();
   }

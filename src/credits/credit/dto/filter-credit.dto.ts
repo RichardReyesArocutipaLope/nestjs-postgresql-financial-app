@@ -4,7 +4,7 @@ export class FilterCreditDto {
 
 
     @IsOptional()
-    search_value?: string | number;
+    search_value?: string;
 
     @IsString()
     @IsOptional()
