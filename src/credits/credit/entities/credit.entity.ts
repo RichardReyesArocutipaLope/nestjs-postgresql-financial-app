@@ -85,6 +85,7 @@ export class Credit {
     @ManyToOne(
         () => Customer,
         (customer) => customer.credit,
+        { eager: true }
     )
     fk_customer: Customer
 
@@ -92,6 +93,7 @@ export class Credit {
     @ManyToOne(
         () => Employee,
         (employee) => employee.credit_cobrador,
+        { eager: true }
     )
     fk_employee_cobrador: number
 
@@ -99,6 +101,7 @@ export class Credit {
     @ManyToOne(
         () => Employee,
         (employee) => employee.credit_analista,
+        { eager: true }
     )
     fk_employee_analista: number
 
@@ -113,6 +116,7 @@ export class Credit {
     @ManyToOne(
         () => PeriodType,
         (periodType) => periodType.credit,
+        { eager: true }
     )
     fk_period_type: number
 
@@ -120,14 +124,14 @@ export class Credit {
     @OneToMany(
         () => Aval,
         (aval) => aval.fk_credit,
-        { cascade: false }
+        { cascade: false, eager: true }
     )
     aval: Aval
 
     @OneToMany(
         () => PersonalReference,
         (personalReference) => personalReference.fk_credit,
-        { cascade: false }
+        { cascade: false, eager: true }
     )
     personalReference: PersonalReference
 

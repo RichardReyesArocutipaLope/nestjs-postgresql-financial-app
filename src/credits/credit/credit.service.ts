@@ -38,7 +38,7 @@ export class CreditService {
 
   async create(createCreditDto: CreateCreditDto, user: User) {
     try {
-      const { aval, personalReference, customer, business, ...credit } = createCreditDto
+      const { aval = [], personalReference = [], customer, business, ...credit } = createCreditDto
       const { full_name, fk_employee } = user;
       if (!(typeof fk_employee == 'object')) throw new NotFoundException(`no existe employee`)
       const audit = {
@@ -55,16 +55,20 @@ export class CreditService {
       const newCredit = this.creditRepository.create({ ...credit, fk_customer: savedCustomer, ...audit })
       const savedCredit = await this.creditRepository.save(newCredit)
 
-      const newAval = this.avalRepository.create({ ...aval, fk_credit: savedCredit, ...audit })
-      await this.avalRepository.save(newAval)
+      for (const item of aval) {
+        let newAval = this.avalRepository.create({ ...item, fk_credit: savedCredit, ...audit })
+        await this.avalRepository.save(newAval)
+      }
 
-      const newPersonalReference = this.personalReferenceRepository.create({ ...personalReference, fk_credit: savedCredit, ...audit })
-      await this.personalReferenceRepository.save(newPersonalReference)
+      for (const item of personalReference) {
+        let newPersonalReference = this.personalReferenceRepository.create({ ...item, fk_credit: savedCredit, ...audit })
+        await this.personalReferenceRepository.save(newPersonalReference)
+      }
 
+      
+      const getCredit = await this.findOne(savedCredit.id)
       return {
-        Credit: savedCredit,
-        Aval: { ...newAval },
-        PersonalReference: { ...newPersonalReference }
+        credit: getCredit,
       }
 
     } catch (error) {

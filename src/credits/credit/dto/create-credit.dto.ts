@@ -43,11 +43,11 @@ export class CreateCreditDto {
     @IsOptional()
     observation?:string;
 
-    @IsOptional()
-    aval?: CreateAvalDto
+    @IsOptional({each:true})
+    aval?: CreateAvalDto[]
 
-    @IsOptional()
-    personalReference?: CreatePersonalReferenceDto
+    @IsOptional({each:true})
+    personalReference?: CreatePersonalReferenceDto[]
 
     @IsOptional()
     business?: CreateBusinessDto

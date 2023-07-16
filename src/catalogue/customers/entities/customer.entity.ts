@@ -118,7 +118,7 @@ export class Customer {
     )
     fk_housing_type: number
 
-    @OneToOne(()=>Business)
+    @OneToOne(()=>Business, {eager:true})
     @JoinColumn()
     business: Business
     // auditoria

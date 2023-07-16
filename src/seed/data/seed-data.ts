@@ -91,8 +91,8 @@ interface SeedCredit {
     fk_employee_analista: number
     fk_financial_interest: number
     fk_period_type: number
-    aval: SeedAval;
-    personalReference: SeedRef
+    aval: SeedAval[];
+    personalReference: SeedRef[]
     customer: SeedCustomers;
     business: SeedBusiness;
 }
@@ -354,15 +354,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71802615,
                 first_name: "Rogelio Salvador",
                 last_name: "Torp Cole",
                 phone: "+51 304 557 160",
                 email: "Rhiannon30@hotmail.com",
                 address: "24541 Lauryn Hills Apt. 223"
-            },
-            personalReference: {
+            },],
+            personalReference: [{
                 dni: 71838241,
                 first_name: "Richard Aaron",
                 last_name: "Senger Jenkins",
@@ -370,7 +370,7 @@ export const initialData: SeedData = {
                 email: "Dangelo52@yahoo.com",
                 address: "867 Stracke Light Suite 880",
                 relationship: "Architect"
-            },
+            },],
             customer: {
                 dni: 71251923,
                 first_name: "Ernest Jermaine",
@@ -407,15 +407,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval:[ {
                 dni: 71484880,
                 first_name: "Brandon Ricardo",
                 last_name: "Padberg Price-Paucek",
                 phone: "+51 598 354 251",
                 email: "Walton9@gmail.com",
                 address: "18207 Eric Manors Suite 889"
-            },
-            personalReference: {
+            }],
+            personalReference: [{
                 dni: 71684054,
                 first_name: "Steve Clay",
                 last_name: "Friesen-Brekke Klein",
@@ -423,7 +423,7 @@ export const initialData: SeedData = {
                 email: "Kelsie.Wisoky8@hotmail.com",
                 address: "86365 Daryl Villages Suite 426",
                 relationship: "Director"
-            },
+            },],
             customer: {
                 dni: 71197301,
                 first_name: "Jeff Terry",
@@ -460,15 +460,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71010176,
                 first_name: "Terrance Salvador",
                 last_name: "Murphy Okuneva",
                 phone: "+51 202 693 195",
                 email: "Abbie_Funk19@yahoo.com",
                 address: "1061 Boyle Valleys Suite 317"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71122036,
                 first_name: "Mitchell Emanuel",
                 last_name: "Mohr Barrows",
@@ -476,7 +476,7 @@ export const initialData: SeedData = {
                 email: "Roel_Reichel45@hotmail.com",
                 address: "2084 Marques Forks Suite 887",
                 relationship: "Analyst"
-            },
+            },],
             customer: {
                 dni: 71224690,
                 first_name: "Pat Leon",
@@ -513,15 +513,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71060936,
                 first_name: "Garrett Irving",
                 last_name: "Ruecker Spinka",
                 phone: "+51 466 106 593",
                 email: "Cora_Emmerich82@hotmail.com",
                 address: "714 Wyman Drives Apt. 715"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71850507,
                 first_name: "Jerome Ruben",
                 last_name: "Green Schneider",
@@ -529,7 +529,7 @@ export const initialData: SeedData = {
                 email: "Melissa.Waters@gmail.com",
                 address: "3957 Lakin Spring Apt. 415",
                 relationship: "Supervisor"
-            },
+            },],
             customer: {
                 dni: 71631991,
                 first_name: "Clarence Johnathan",
@@ -566,15 +566,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71302926,
                 first_name: "Robert Clinton",
                 last_name: "Kiehn Corkery",
                 phone: "+51 087 977 114",
                 email: "Tristian25@yahoo.com",
                 address: "8211 Walton Lakes Suite 772"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71835144,
                 first_name: "Malcolm Angelo",
                 last_name: "Rau Turner",
@@ -582,7 +582,7 @@ export const initialData: SeedData = {
                 email: "Corbin.Turcotte@yahoo.com",
                 address: "9859 Yessenia Extension Suite 694",
                 relationship: "Developer"
-            },
+            },],
             customer: {
                 dni: 71121579,
                 first_name: "Elbert Elmer",
@@ -619,15 +619,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71806002,
                 first_name: "Andre Luther",
                 last_name: "Brown Carter",
                 phone: "+51 198 969 348",
                 email: "Zackery_Stracke@hotmail.com",
                 address: "6600 Koelpin Islands Apt. 683"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71506388,
                 first_name: "Merle Garrett",
                 last_name: "Schoen Trantow",
@@ -635,7 +635,7 @@ export const initialData: SeedData = {
                 email: "Michaela.Becker@yahoo.com",
                 address: "4149 Lind Circle Suite 580",
                 relationship: "Assistant"
-            },
+            },],
             customer: {
                 dni: 71455007,
                 first_name: "Emanuel Terence",
@@ -672,15 +672,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71754701,
                 first_name: "Salvatore Nicolas",
                 last_name: "Johnston Gerhold",
                 phone: "+51 457 944 288",
                 email: "Rosalyn.Considine14@gmail.com",
                 address: "7222 Bashirian Unions Apt. 779"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71186366,
                 first_name: "Orville Mario",
                 last_name: "Terry Parisian",
@@ -688,7 +688,7 @@ export const initialData: SeedData = {
                 email: "Ron.Toy1@gmail.com",
                 address: "6035 Schaefer Turnpike Suite 135",
                 relationship: "Associate"
-            },
+            },],
             customer: {
                 dni: 71877482,
                 first_name: "Duane Daniel",
@@ -725,15 +725,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71649987,
                 first_name: "Dale Michael",
                 last_name: "Wilderman Gorczany",
                 phone: "+51 855 501 460",
                 email: "Gertrude.Weissnat-Hamill65@yahoo.com",
                 address: "117 Jasen Mountains Apt. 921"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71448035,
                 first_name: "Donald Joshua",
                 last_name: "Okuneva Wuckert",
@@ -741,7 +741,7 @@ export const initialData: SeedData = {
                 email: "Bonnie21@hotmail.com",
                 address: "52633 Myrna Corners Suite 609",
                 relationship: "Representative"
-            },
+            },],
             customer: {
                 dni: 71562128,
                 first_name: "Curtis Clinton",
@@ -778,15 +778,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71325721,
                 first_name: "Bradley Roberto",
                 last_name: "Rosenbaum Douglas",
                 phone: "+51 118 724 852",
                 email: "Callie50@yahoo.com",
                 address: "972 Maybell Dam Apt. 183"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71405357,
                 first_name: "Marcus Kurt",
                 last_name: "Schmitt Schneider",
@@ -794,7 +794,7 @@ export const initialData: SeedData = {
                 email: "Dewayne.Collins10@hotmail.com",
                 address: "81742 Zack Tunnel Apt. 907",
                 relationship: "Consultant"
-            },
+            },],
             customer: {
                 dni: 71265810,
                 first_name: "Levi Javier",
@@ -831,15 +831,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71482160,
                 first_name: "Wesley Ian",
                 last_name: "Veum Mohr",
                 phone: "+51 557 999 847",
                 email: "Humberto_McClure49@yahoo.com",
                 address: "8672 Denesik Branch Apt. 202"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71885238,
                 first_name: "Ignacio Nick",
                 last_name: "Hamill Quigley",
@@ -847,7 +847,7 @@ export const initialData: SeedData = {
                 email: "Juwan62@hotmail.com",
                 address: "89344 Graham Lake Apt. 847",
                 relationship: "Coordinator"
-            },
+            },],
             customer: {
                 dni: 71576992,
                 first_name: "Melvin Clint",
@@ -884,15 +884,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71737485,
                 first_name: "Samuel Allen",
                 last_name: "Reinger Corwin",
                 phone: "+51 567 856 425",
                 email: "Kevin_Feest@yahoo.com",
                 address: "259 Spencer Field Suite 158"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71185120,
                 first_name: "Robert Larry",
                 last_name: "Prohaska Jacobs",
@@ -900,7 +900,7 @@ export const initialData: SeedData = {
                 email: "Kailee.Wolf62@yahoo.com",
                 address: "61743 Dietrich Flats Suite 643",
                 relationship: "Analyst"
-            },
+            },],
             customer: {
                 dni: 71600534,
                 first_name: "Jean Steven",
@@ -937,15 +937,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71772464,
                 first_name: "Ken Kevin",
                 last_name: "Cassin Davis",
                 phone: "+51 543 985 044",
                 email: "Brooke_Hauck25@yahoo.com",
                 address: "5181 O'Reilly Isle Suite 657"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71087574,
                 first_name: "Jermaine Gene",
                 last_name: "Kiehn Price",
@@ -953,7 +953,7 @@ export const initialData: SeedData = {
                 email: "Skylar.Marks10@yahoo.com",
                 address: "375 Dashawn Trace Apt. 883",
                 relationship: "Executive"
-            },
+            },],
             customer: {
                 dni: 71615163,
                 first_name: "Perry Grant",
@@ -990,15 +990,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71210899,
                 first_name: "Aubrey Kurt",
                 last_name: "Braun Pfeffer",
                 phone: "+51 282 680 245",
                 email: "Jailyn93@yahoo.com",
                 address: "89571 Ada Spurs Apt. 440"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71142990,
                 first_name: "Ronnie Rodney",
                 last_name: "Langworth Tillman",
@@ -1006,7 +1006,7 @@ export const initialData: SeedData = {
                 email: "Jessy.Marks99@yahoo.com",
                 address: "54377 Karen Place Suite 133",
                 relationship: "Strategist"
-            },
+            },],
             customer: {
                 dni: 71380565,
                 first_name: "Van Chris",
@@ -1043,15 +1043,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71358760,
                 first_name: "Chad Lionel",
                 last_name: "Larkin Beahan",
                 phone: "+51 453 516 156",
                 email: "Carter99@gmail.com",
                 address: "6474 Bethany Route Apt. 609"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71335573,
                 first_name: "Dominick Lionel",
                 last_name: "Reichert Hahn",
@@ -1059,7 +1059,7 @@ export const initialData: SeedData = {
                 email: "Dan_Kuvalis51@gmail.com",
                 address: "61178 Nichole Avenue Suite 995",
                 relationship: "Executive"
-            },
+            },],
             customer: {
                 dni: 71329209,
                 first_name: "Edmond Stanley",
@@ -1096,15 +1096,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71780324,
                 first_name: "Stewart Danny",
                 last_name: "Padberg Renner",
                 phone: "+51 562 938 200",
                 email: "Ryann_Mayert29@hotmail.com",
                 address: "66956 Johns Brook Suite 337"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71279697,
                 first_name: "Johnathan Garry",
                 last_name: "Conroy Walsh",
@@ -1112,7 +1112,7 @@ export const initialData: SeedData = {
                 email: "Brandi0@gmail.com",
                 address: "72527 Gerlach Unions Apt. 255",
                 relationship: "Representative"
-            },
+            },],
             customer: {
                 dni: 71714979,
                 first_name: "Alejandro Abel",
@@ -1149,15 +1149,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71205067,
                 first_name: "Malcolm Gerard",
                 last_name: "Kuhn Waters",
                 phone: "+51 730 993 660",
                 email: "Delfina_Gulgowski-Kunze55@yahoo.com",
                 address: "6741 Reilly Manor Suite 520"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71259097,
                 first_name: "Terence Alonzo",
                 last_name: "Turner Walker",
@@ -1165,7 +1165,7 @@ export const initialData: SeedData = {
                 email: "Antonia.Emmerich@hotmail.com",
                 address: "800 Tremaine Fork Apt. 175",
                 relationship: "Designer"
-            },
+            },],
             customer: {
                 dni: 71771299,
                 first_name: "Jeremy Alfonso",
@@ -1202,15 +1202,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71204909,
                 first_name: "Danny Ervin",
                 last_name: "Herzog Corwin",
                 phone: "+51 034 900 384",
                 email: "Albert1@hotmail.com",
                 address: "127 Gottlieb Inlet Apt. 403"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71262835,
                 first_name: "Troy Kirk",
                 last_name: "Heaney Hammes-Hackett",
@@ -1218,7 +1218,7 @@ export const initialData: SeedData = {
                 email: "Bradly.Davis@yahoo.com",
                 address: "15001 Littel Vista Suite 714",
                 relationship: "Facilitator"
-            },
+            },],
             customer: {
                 dni: 71379880,
                 first_name: "Reginald Steven",
@@ -1255,15 +1255,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71322602,
                 first_name: "Edward Edward",
                 last_name: "Pfeffer Schiller",
                 phone: "+51 046 133 418",
                 email: "Mossie71@gmail.com",
                 address: "7429 Koch Falls Suite 514"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71816812,
                 first_name: "Franklin Ismael",
                 last_name: "Jast Lemke",
@@ -1271,7 +1271,7 @@ export const initialData: SeedData = {
                 email: "Rupert65@gmail.com",
                 address: "9766 Schinner Extension Suite 842",
                 relationship: "Liaison"
-            },
+            },],
             customer: {
                 dni: 71008929,
                 first_name: "Ray Bennie",
@@ -1308,15 +1308,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71667046,
                 first_name: "Raymond William",
                 last_name: "Bergstrom-Schneider Friesen",
                 phone: "+51 893 134 343",
                 email: "Waino73@hotmail.com",
                 address: "541 Champlin Harbor Suite 934"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71153891,
                 first_name: "Barry Gerald",
                 last_name: "McLaughlin Reilly",
@@ -1324,7 +1324,7 @@ export const initialData: SeedData = {
                 email: "Dedric_Pacocha@gmail.com",
                 address: "953 Reilly Trafficway Apt. 197",
                 relationship: "Planner"
-            },
+            },],
             customer: {
                 dni: 71253490,
                 first_name: "Jackie Doug",
@@ -1361,15 +1361,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71850959,
                 first_name: "Julio Darryl",
                 last_name: "Berge-Ledner Klein",
                 phone: "+51 745 771 103",
                 email: "Mae_Corwin6@yahoo.com",
                 address: "8021 Stroman Plaza Suite 375"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71361002,
                 first_name: "Henry Merle",
                 last_name: "Prohaska Hansen",
@@ -1377,7 +1377,7 @@ export const initialData: SeedData = {
                 email: "Rosina_Pfannerstill39@yahoo.com",
                 address: "13563 Aniya Track Suite 214",
                 relationship: "Developer"
-            },
+            },],
             customer: {
                 dni: 71765979,
                 first_name: "Irving Devin",
@@ -1414,15 +1414,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71125795,
                 first_name: "Delbert Kyle",
                 last_name: "Carter-Tillman Pollich",
                 phone: "+51 800 876 241",
                 email: "Eli5@yahoo.com",
                 address: "335 Kellie Crossroad Suite 567"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71019501,
                 first_name: "Bennie Gary",
                 last_name: "Brakus Jacobson",
@@ -1430,7 +1430,7 @@ export const initialData: SeedData = {
                 email: "Salma.Price59@yahoo.com",
                 address: "823 Jadon Unions Apt. 293",
                 relationship: "Facilitator"
-            },
+            },],
             customer: {
                 dni: 71790145,
                 first_name: "Darin Mike",
@@ -1467,15 +1467,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71345520,
                 first_name: "Brett Jose",
                 last_name: "Konopelski Fahey",
                 phone: "+51 579 124 904",
                 email: "Mozelle67@yahoo.com",
                 address: "99003 Erdman Forges Suite 108"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71059705,
                 first_name: "Toby Benjamin",
                 last_name: "O'Kon Stiedemann",
@@ -1483,7 +1483,7 @@ export const initialData: SeedData = {
                 email: "Thora.Thompson82@yahoo.com",
                 address: "5617 Veum Knolls Apt. 677",
                 relationship: "Developer"
-            },
+            },],
             customer: {
                 dni: 71144187,
                 first_name: "Woodrow Felix",
@@ -1520,15 +1520,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71491232,
                 first_name: "Tim Elias",
                 last_name: "Kirlin Gutmann",
                 phone: "+51 163 927 036",
                 email: "Hildegard.Braun@hotmail.com",
                 address: "781 Towne Mews Apt. 522"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71545514,
                 first_name: "Keith Mathew",
                 last_name: "Pfannerstill Rutherford",
@@ -1536,7 +1536,7 @@ export const initialData: SeedData = {
                 email: "Robbie_Brakus95@gmail.com",
                 address: "2183 Hilpert Shore Suite 633",
                 relationship: "Technician"
-            },
+            },],
             customer: {
                 dni: 71216511,
                 first_name: "Ramiro Jesus",
@@ -1573,15 +1573,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71525085,
                 first_name: "Jimmie Phillip",
                 last_name: "Prosacco Flatley",
                 phone: "+51 228 158 717",
                 email: "Rafaela.Gusikowski8@hotmail.com",
                 address: "91386 Winona Crescent Apt. 184"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71824311,
                 first_name: "Geoffrey Pablo",
                 last_name: "Abernathy Cronin",
@@ -1589,7 +1589,7 @@ export const initialData: SeedData = {
                 email: "Hassan98@gmail.com",
                 address: "9774 Jennie Road Suite 163",
                 relationship: "Administrator"
-            },
+            },],
             customer: {
                 dni: 71219425,
                 first_name: "Don Reginald",
@@ -1626,15 +1626,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71543101,
                 first_name: "Tyrone Donald",
                 last_name: "Mraz Labadie",
                 phone: "+51 319 885 592",
                 email: "Ray_Rath70@gmail.com",
                 address: "44916 Sauer Pass Suite 579"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71768026,
                 first_name: "Patrick Devin",
                 last_name: "Cronin-Leannon Raynor",
@@ -1642,7 +1642,7 @@ export const initialData: SeedData = {
                 email: "Lorine.Zulauf79@hotmail.com",
                 address: "31075 Haley Canyon Apt. 461",
                 relationship: "Engineer"
-            },
+            },],
             customer: {
                 dni: 71322460,
                 first_name: "Tomas Eugene",
@@ -1679,15 +1679,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71288922,
                 first_name: "Leland Shaun",
                 last_name: "Gusikowski Brakus-Morar",
                 phone: "+51 689 708 439",
                 email: "Roy_Bednar57@gmail.com",
                 address: "8577 Lane Common Apt. 405"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71759336,
                 first_name: "Colin Salvatore",
                 last_name: "Koch Kassulke",
@@ -1695,7 +1695,7 @@ export const initialData: SeedData = {
                 email: "Griffin.Gusikowski37@yahoo.com",
                 address: "219 Franecki Trail Apt. 659",
                 relationship: "Supervisor"
-            },
+            },],
             customer: {
                 dni: 71110471,
                 first_name: "Erik Eugene",
@@ -1732,15 +1732,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71631281,
                 first_name: "Forrest Reginald",
                 last_name: "Little McLaughlin",
                 phone: "+51 004 226 552",
                 email: "Casimer10@hotmail.com",
                 address: "79260 David Estate Apt. 430"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71056433,
                 first_name: "Darnell Spencer",
                 last_name: "Leuschke Ledner",
@@ -1748,7 +1748,7 @@ export const initialData: SeedData = {
                 email: "Eda_Kassulke56@hotmail.com",
                 address: "993 Quigley Drive Suite 635",
                 relationship: "Administrator"
-            },
+            },],
             customer: {
                 dni: 71470653,
                 first_name: "Drew Kelly",
@@ -1785,15 +1785,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71598054,
                 first_name: "Timothy Ramiro",
                 last_name: "Larkin Turner",
                 phone: "+51 994 659 231",
                 email: "Wilmer25@gmail.com",
                 address: "620 Jaylin Grove Apt. 410"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71720604,
                 first_name: "Derrick Leroy",
                 last_name: "Rau Kassulke",
@@ -1801,7 +1801,7 @@ export const initialData: SeedData = {
                 email: "Dock_Doyle28@gmail.com",
                 address: "8975 Dwight Fords Apt. 723",
                 relationship: "Architect"
-            },
+            },],
             customer: {
                 dni: 71834031,
                 first_name: "Joel Gilberto",
@@ -1838,15 +1838,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71384268,
                 first_name: "Ricardo Eddie",
                 last_name: "Luettgen Cormier",
                 phone: "+51 940 456 773",
                 email: "Barney_Rice0@hotmail.com",
                 address: "68532 Labadie Plain Apt. 871"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71232853,
                 first_name: "Elias Everett",
                 last_name: "Rau Boyle",
@@ -1854,7 +1854,7 @@ export const initialData: SeedData = {
                 email: "Marvin10@gmail.com",
                 address: "411 Okuneva Lake Apt. 161",
                 relationship: "Architect"
-            },
+            },],
             customer: {
                 dni: 71580861,
                 first_name: "Ryan Pablo",
@@ -1891,15 +1891,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71185850,
                 first_name: "Claude Luis",
                 last_name: "Marvin Rath",
                 phone: "+51 248 837 071",
                 email: "Delores_Haag@yahoo.com",
                 address: "690 Jacobi Pine Suite 408"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71097618,
                 first_name: "Donald Gerald",
                 last_name: "Wisozk Koelpin-Nitzsche",
@@ -1907,7 +1907,7 @@ export const initialData: SeedData = {
                 email: "Chester55@hotmail.com",
                 address: "374 Elna Burg Suite 193",
                 relationship: "Developer"
-            },
+            },],
             customer: {
                 dni: 71555788,
                 first_name: "Perry Jeremy",
@@ -1944,15 +1944,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71724556,
                 first_name: "Vernon Homer",
                 last_name: "Ebert Schuster",
                 phone: "+51 019 314 291",
                 email: "Marian_Lindgren@gmail.com",
                 address: "734 Janet Common Apt. 344"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71782439,
                 first_name: "Lynn Wilbur",
                 last_name: "Grant Jerde",
@@ -1960,7 +1960,7 @@ export const initialData: SeedData = {
                 email: "Kendra_Heidenreich89@hotmail.com",
                 address: "4287 Braun Streets Suite 385",
                 relationship: "Architect"
-            },
+            },],
             customer: {
                 dni: 71821668,
                 first_name: "Billy Erik",
@@ -1997,15 +1997,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71262606,
                 first_name: "Reginald Ross",
                 last_name: "West Mayert",
                 phone: "+51 761 818 104",
                 email: "Jaycee5@yahoo.com",
                 address: "588 Hailey Estates Apt. 867"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71772189,
                 first_name: "Philip Jonathon",
                 last_name: "Skiles Brekke",
@@ -2013,7 +2013,7 @@ export const initialData: SeedData = {
                 email: "Jairo.MacGyver@gmail.com",
                 address: "212 Johnson Pass Suite 844",
                 relationship: "Assistant"
-            },
+            },],
             customer: {
                 dni: 71128801,
                 first_name: "Harold Duane",
@@ -2050,15 +2050,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71666316,
                 first_name: "Neil Albert",
                 last_name: "Mitchell Cummerata",
                 phone: "+51 504 300 776",
                 email: "Micah.Corwin@gmail.com",
                 address: "958 Marianne Inlet Apt. 906"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71560644,
                 first_name: "Wallace Abel",
                 last_name: "Stanton Rowe",
@@ -2066,7 +2066,7 @@ export const initialData: SeedData = {
                 email: "Thea.McDermott@gmail.com",
                 address: "666 Llewellyn Harbor Suite 139",
                 relationship: "Facilitator"
-            },
+            },],
             customer: {
                 dni: 71262944,
                 first_name: "Alvin Wm",
@@ -2103,15 +2103,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71289763,
                 first_name: "Carlos Douglas",
                 last_name: "Boyer Bechtelar",
                 phone: "+51 774 447 071",
                 email: "Skyla.Armstrong@yahoo.com",
                 address: "235 Cynthia Gateway Apt. 525"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71887781,
                 first_name: "Randolph Stanley",
                 last_name: "Simonis Murray",
@@ -2119,7 +2119,7 @@ export const initialData: SeedData = {
                 email: "Zoey.Cummerata42@yahoo.com",
                 address: "60116 Graham Lock Suite 898",
                 relationship: "Specialist"
-            },
+            },],
             customer: {
                 dni: 71277053,
                 first_name: "Tommie Randy",
@@ -2156,15 +2156,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71784511,
                 first_name: "Eddie Tommie",
                 last_name: "Bartoletti Spinka",
                 phone: "+51 588 841 526",
                 email: "Bulah_Schuppe@hotmail.com",
                 address: "1950 Una Dam Suite 470"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71380439,
                 first_name: "Salvatore Kerry",
                 last_name: "Schneider Boyer",
@@ -2172,7 +2172,7 @@ export const initialData: SeedData = {
                 email: "Garry_Orn45@yahoo.com",
                 address: "2881 Dannie Street Apt. 522",
                 relationship: "Assistant"
-            },
+            },],
             customer: {
                 dni: 71574185,
                 first_name: "Lance Joseph",
@@ -2209,15 +2209,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71042906,
                 first_name: "Ronald Troy",
                 last_name: "Spinka Oberbrunner",
                 phone: "+51 617 942 278",
                 email: "Kacey_Homenick@yahoo.com",
                 address: "680 Frami Estates Suite 611"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71517388,
                 first_name: "Dana Erik",
                 last_name: "Olson Witting",
@@ -2225,7 +2225,7 @@ export const initialData: SeedData = {
                 email: "Edgardo_Bogan4@yahoo.com",
                 address: "93307 Jakubowski Square Apt. 309",
                 relationship: "Associate"
-            },
+            },],
             customer: {
                 dni: 71241625,
                 first_name: "John Neil",
@@ -2262,15 +2262,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71334194,
                 first_name: "Victor Merle",
                 last_name: "Crooks Weissnat",
                 phone: "+51 977 009 529",
                 email: "Terrence91@gmail.com",
                 address: "652 Koelpin Dam Suite 706"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71195797,
                 first_name: "Mack Eddie",
                 last_name: "Gerhold Deckow-Kuhlman",
@@ -2278,7 +2278,7 @@ export const initialData: SeedData = {
                 email: "Bridgette.Bernier56@gmail.com",
                 address: "690 Erick Curve Apt. 837",
                 relationship: "Strategist"
-            },
+            },],
             customer: {
                 dni: 71137197,
                 first_name: "Luis Rene",
@@ -2315,15 +2315,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71307577,
                 first_name: "Billy Ignacio",
                 last_name: "Denesik Rempel",
                 phone: "+51 819 033 617",
                 email: "Paris_Parisian98@gmail.com",
                 address: "9693 Scottie Cove Suite 631"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71455181,
                 first_name: "Clay Sheldon",
                 last_name: "Block Franey",
@@ -2331,7 +2331,7 @@ export const initialData: SeedData = {
                 email: "Natalia_Daniel@hotmail.com",
                 address: "5782 Treutel Knoll Suite 541",
                 relationship: "Director"
-            },
+            },],
             customer: {
                 dni: 71662810,
                 first_name: "Clyde Greg",
@@ -2368,15 +2368,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71462829,
                 first_name: "Leland Marcus",
                 last_name: "McGlynn Effertz",
                 phone: "+51 239 895 346",
                 email: "Sydney_Kerluke@hotmail.com",
                 address: "675 Jarrell Parks Apt. 156"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71395711,
                 first_name: "Abel Randall",
                 last_name: "McKenzie Grimes",
@@ -2384,7 +2384,7 @@ export const initialData: SeedData = {
                 email: "Hazle.Raynor@gmail.com",
                 address: "10628 Melisa Place Apt. 342",
                 relationship: "Consultant"
-            },
+            },],
             customer: {
                 dni: 71789729,
                 first_name: "Andre Jon",
@@ -2421,15 +2421,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71508536,
                 first_name: "Karl Steve",
                 last_name: "Green Roberts",
                 phone: "+51 701 036 012",
                 email: "Anahi_Johns@yahoo.com",
                 address: "344 Rocky Land Apt. 244"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71650560,
                 first_name: "Vincent Woodrow",
                 last_name: "Gleason Pouros",
@@ -2437,7 +2437,7 @@ export const initialData: SeedData = {
                 email: "Lazaro49@yahoo.com",
                 address: "1933 Moen Centers Apt. 258",
                 relationship: "Manager"
-            },
+            },],
             customer: {
                 dni: 71008440,
                 first_name: "Garry Sergio",
@@ -2474,15 +2474,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71363448,
                 first_name: "Darrel Ted",
                 last_name: "Von Gorczany",
                 phone: "+51 483 558 345",
                 email: "Alexie60@gmail.com",
                 address: "484 Jeramie Valley Apt. 902"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71765369,
                 first_name: "Daryl Juan",
                 last_name: "Rau Zieme",
@@ -2490,7 +2490,7 @@ export const initialData: SeedData = {
                 email: "Jena72@gmail.com",
                 address: "8368 Schiller Trail Apt. 401",
                 relationship: "Director"
-            },
+            },],
             customer: {
                 dni: 71612471,
                 first_name: "Patrick Tom",
@@ -2527,15 +2527,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71373803,
                 first_name: "Myron Chad",
                 last_name: "Hansen Buckridge",
                 phone: "+51 331 782 207",
                 email: "Myrtle.Labadie@hotmail.com",
                 address: "116 Grady Isle Suite 771"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71303872,
                 first_name: "Jeremiah Terrance",
                 last_name: "Klein Lehner",
@@ -2543,7 +2543,7 @@ export const initialData: SeedData = {
                 email: "Davion83@yahoo.com",
                 address: "49861 Sipes Station Apt. 849",
                 relationship: "Director"
-            },
+            },],
             customer: {
                 dni: 71269321,
                 first_name: "Wayne Max",
@@ -2580,15 +2580,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71551296,
                 first_name: "Tony Sidney",
                 last_name: "Kautzer Herzog",
                 phone: "+51 126 119 953",
                 email: "Bo_Reichert14@gmail.com",
                 address: "734 Annamae Island Apt. 330"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71280385,
                 first_name: "Conrad Joshua",
                 last_name: "Bergnaum Heller",
@@ -2596,7 +2596,7 @@ export const initialData: SeedData = {
                 email: "Larue20@hotmail.com",
                 address: "8249 White Well Suite 950",
                 relationship: "Officer"
-            },
+            },],
             customer: {
                 dni: 71576375,
                 first_name: "Santiago Curtis",
@@ -2633,15 +2633,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 4,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71133965,
                 first_name: "Marshall Robin",
                 last_name: "Conroy Brakus",
                 phone: "+51 607 518 731",
                 email: "Fae_McKenzie21@yahoo.com",
                 address: "7754 Camylle Radial Suite 657"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71831976,
                 first_name: "Shannon Clinton",
                 last_name: "Homenick Deckow",
@@ -2649,7 +2649,7 @@ export const initialData: SeedData = {
                 email: "Brandi4@yahoo.com",
                 address: "401 Ernesto Shoals Suite 320",
                 relationship: "Director"
-            },
+            },],
             customer: {
                 dni: 71804286,
                 first_name: "Phil Ira",
@@ -2686,15 +2686,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 4,
-            aval: {
+            aval: [{
                 dni: 71660712,
                 first_name: "Howard Thomas",
                 last_name: "Leuschke Adams",
                 phone: "+51 001 918 438",
                 email: "Jo_Swift@gmail.com",
                 address: "3132 Green Greens Suite 317"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71656488,
                 first_name: "Don Gary",
                 last_name: "Strosin Conroy",
@@ -2702,7 +2702,7 @@ export const initialData: SeedData = {
                 email: "Maybelle.Spinka19@hotmail.com",
                 address: "1364 Nathan Harbors Apt. 609",
                 relationship: "Assistant"
-            },
+            },],
             customer: {
                 dni: 71729946,
                 first_name: "Gabriel Abel",
@@ -2739,15 +2739,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 1,
-            aval: {
+            aval: [{
                 dni: 71032320,
                 first_name: "Salvatore Loren",
                 last_name: "Hartmann Schultz",
                 phone: "+51 949 649 856",
                 email: "Betsy_Weber56@yahoo.com",
                 address: "51864 Jamison Neck Apt. 476"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71884760,
                 first_name: "Larry Dave",
                 last_name: "Mills Jacobson",
@@ -2755,7 +2755,7 @@ export const initialData: SeedData = {
                 email: "Nettie_Little@gmail.com",
                 address: "53160 Claude Keys Apt. 606",
                 relationship: "Representative"
-            },
+            },],
             customer: {
                 dni: 71893812,
                 first_name: "Saul Justin",
@@ -2792,15 +2792,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 3,
-            aval: {
+            aval: [{
                 dni: 71248365,
                 first_name: "Aaron Roland",
                 last_name: "Stanton Huels",
                 phone: "+51 483 023 489",
                 email: "Drew_Considine90@yahoo.com",
                 address: "3286 Viola Coves Apt. 943"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71033228,
                 first_name: "Christopher Percy",
                 last_name: "Zulauf Wisoky",
@@ -2808,7 +2808,7 @@ export const initialData: SeedData = {
                 email: "Francisco.Armstrong33@yahoo.com",
                 address: "512 Bridgette Harbors Suite 246",
                 relationship: "Engineer"
-            },
+            },],
             customer: {
                 dni: 71456125,
                 first_name: "Eugene Wesley",
@@ -2845,15 +2845,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71791420,
                 first_name: "Lionel Tommie",
                 last_name: "Wiza Gislason",
                 phone: "+51 693 919 330",
                 email: "Sabryna78@gmail.com",
                 address: "44150 Schimmel Light Suite 278"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71632587,
                 first_name: "Malcolm Jeffery",
                 last_name: "Lemke Kuphal",
@@ -2861,7 +2861,7 @@ export const initialData: SeedData = {
                 email: "Mayra36@yahoo.com",
                 address: "602 Erdman Courts Suite 354",
                 relationship: "Agent"
-            },
+            },],
             customer: {
                 dni: 71333975,
                 first_name: "Tom Moses",
@@ -2898,15 +2898,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 5,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71867557,
                 first_name: "Mitchell Geoffrey",
                 last_name: "Bogisich Murray",
                 phone: "+51 922 112 491",
                 email: "Rosalind.Larson@gmail.com",
                 address: "24859 Smith Crest Suite 592"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71185565,
                 first_name: "Nick Martin",
                 last_name: "Olson Windler",
@@ -2914,7 +2914,7 @@ export const initialData: SeedData = {
                 email: "Doug_Walter8@gmail.com",
                 address: "598 Eino Wells Apt. 443",
                 relationship: "Architect"
-            },
+            },],
             customer: {
                 dni: 71106444,
                 first_name: "Jermaine Colin",
@@ -2951,15 +2951,15 @@ export const initialData: SeedData = {
             fk_employee_analista: 3,
             fk_financial_interest: 1,
             fk_period_type: 2,
-            aval: {
+            aval: [{
                 dni: 71577400,
                 first_name: "Marcos Gilbert",
                 last_name: "Schamberger Rippin",
                 phone: "+51 290 703 578",
                 email: "Raul43@hotmail.com",
                 address: "7603 Bednar Landing Apt. 511"
-            },
-            personalReference: {
+            },],
+            personalReference:[ {
                 dni: 71179665,
                 first_name: "Rogelio Dexter",
                 last_name: "Johnson-Mante Rippin",
@@ -2967,7 +2967,7 @@ export const initialData: SeedData = {
                 email: "Emelia65@gmail.com",
                 address: "4232 Stamm Forks Apt. 790",
                 relationship: "Executive"
-            },
+            },],
             customer: {
                 dni: 71768416,
                 first_name: "Drew Thomas",
