@@ -16,12 +16,14 @@ export class CreatePersonalReferenceDto {
     phone: string;
 
     @IsString()
+    @IsOptional()
     email: string;
 
     @IsString()
     address: string;
 
     @IsString()
+    @IsOptional()
     relationship: string;
 
 }

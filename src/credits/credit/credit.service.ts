@@ -73,7 +73,8 @@ export class CreditService {
 
     } catch (error) {
       console.log(error)
-      throw new InternalServerErrorException('Ayuda')
+      // console.log(error.driverError.detail)
+      throw new InternalServerErrorException(error.driverError?.detail)
     }
   }
 
@@ -82,8 +83,6 @@ export class CreditService {
     const { limit = 10, offset = 0 } = paginationDto
     const { search_value = null, state = null, date_range_first = null, date_range_last = null, money_range_first = null,
       money_range_last = null, id_analista = null, id_cobrador = null, } = filterCreditDto
-
-    console.log(filterCreditDto)
 
     const queryBuilder = this.creditRepository.createQueryBuilder('credit');
     const queryCredits = queryBuilder.select([
@@ -127,7 +126,7 @@ export class CreditService {
         qb6.where("cobrador.id=:id_cobrador", { id_cobrador })
           .orWhere("cast(:id_cobrador as numeric) is null", { id_cobrador })
       }))
-      .orderBy("credit.id", "ASC")
+      .orderBy("credit.id", "DESC")
       .offset(offset)
       .limit(limit)
     // .getSql();

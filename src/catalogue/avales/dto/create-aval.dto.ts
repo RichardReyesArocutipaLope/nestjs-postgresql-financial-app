@@ -16,6 +16,7 @@ export class CreateAvalDto {
     phone: string;
 
     @IsString()
+    @IsOptional()
     email: string;
 
     @IsString()

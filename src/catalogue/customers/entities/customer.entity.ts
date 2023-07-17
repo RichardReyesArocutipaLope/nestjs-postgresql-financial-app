@@ -37,12 +37,14 @@ export class Customer {
     @Column({
         type: 'varchar',
         length: 15,
+        nullable: true,
     })
     phone2: string;
 
     @Column({
         type: 'varchar',
         length: 50,
+        nullable: true,
     })
     email: string;
 

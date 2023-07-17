@@ -34,6 +34,7 @@ export class Aval {
     @Column({
         type:'varchar',
         length:50,
+        nullable: true,
     })
     email:string;
 

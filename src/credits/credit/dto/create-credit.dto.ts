@@ -7,11 +7,9 @@ import { CreatePersonalReferenceDto } from "src/catalogue/personal-reference/dto
 export class CreateCreditDto {
 
     @IsNumber()
-    @IsPositive()
     requested_money:number;
 
     @IsNumber()
-    @IsPositive()
     @IsOptional()
     approved_money?:number;
 

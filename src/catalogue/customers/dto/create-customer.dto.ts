@@ -16,9 +16,11 @@ export class CreateCustomerDto {
     phone: string;
 
     @IsString()
+    @IsOptional()
     phone2: string;
 
     @IsString()
+    @IsOptional()
     email: string;
 
     @IsString()

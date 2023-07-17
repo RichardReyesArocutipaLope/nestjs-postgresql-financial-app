@@ -34,6 +34,7 @@ export class PersonalReference {
     @Column({
         type: 'varchar',
         length: 50,
+        nullable: true,
     })
     email: string;
 
@@ -46,6 +47,7 @@ export class PersonalReference {
     @Column({
         type: 'varchar',
         length: 30,
+        nullable: true,
     })
     relationship: string;
 
