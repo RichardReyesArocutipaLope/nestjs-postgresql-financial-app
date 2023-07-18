@@ -109,6 +109,7 @@ export class Credit {
     @ManyToOne(
         () => FinancialInterestRate,
         (financialInterestRate) => financialInterestRate.credit,
+        { eager: true }
     )
     fk_financial_interest: number
 

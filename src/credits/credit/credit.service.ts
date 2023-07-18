@@ -65,7 +65,7 @@ export class CreditService {
         await this.personalReferenceRepository.save(newPersonalReference)
       }
 
-      
+
       const getCredit = await this.findOne(savedCredit.id)
       return {
         credit: getCredit,
@@ -162,7 +162,7 @@ export class CreditService {
       updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
     }
 
-    const { aval, personalReference, customer, business, ...credit } = updateCreditDto
+    const { aval = [], personalReference = [], customer, business, ...credit } = updateCreditDto
     const updateCredit = await this.creditRepository.preload({ id: id, ...credit })
     if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
@@ -171,18 +171,22 @@ export class CreditService {
       updateCredit.updated_at = audit.updated_at;
       await this.creditRepository.save(updateCredit)
 
-      if (aval.id) {
-        const updateAval = await this.avalRepository.preload({ ...aval })
-        updateAval.user_update = audit.user_update;
-        updateAval.updated_at = audit.updated_at;
-        await this.avalRepository.save(updateAval)
+      for (const item of aval) {
+        if (item.id) {
+          const updateAval = await this.avalRepository.preload({ ...item })
+          updateAval.user_update = audit.user_update;
+          updateAval.updated_at = audit.updated_at;
+          await this.avalRepository.save(updateAval)
+        }
       }
 
-      if (personalReference.id) {
-        const updateReference = await this.personalReferenceRepository.preload({ ...personalReference })
-        updateReference.user_update = audit.user_update;
-        updateReference.updated_at = audit.updated_at;
-        await this.personalReferenceRepository.save(updateReference)
+      for (const item of personalReference) {
+        if (item.id) {
+          const updateReference = await this.personalReferenceRepository.preload({ ...item })
+          updateReference.user_update = audit.user_update;
+          updateReference.updated_at = audit.updated_at;
+          await this.personalReferenceRepository.save(updateReference)
+        }
       }
 
       if (customer.id) {
@@ -199,10 +203,15 @@ export class CreditService {
         await this.businessRepository.save(updateBusiness)
       }
 
-      return updateCredit
+      const getCredit = await this.findOne(updateCredit.id)
+      return {
+        credit: getCredit,
+      }
 
     } catch (error) {
       console.log(error)
+      // console.log(error.driverError.detail)
+      throw new InternalServerErrorException(error.driverError?.detail)
     }
   }
 

@@ -110,6 +110,7 @@ export class Customer {
     @ManyToOne(
         () => CivilStatus,
         (civil_status) => civil_status.customer,
+        {eager:true}
     )
     fk_civil_status: number
 
@@ -117,6 +118,7 @@ export class Customer {
     @ManyToOne(
         () => HousingType,
         (housing_type) => housing_type.customer,
+        {eager:true}
     )
     fk_housing_type: number
 

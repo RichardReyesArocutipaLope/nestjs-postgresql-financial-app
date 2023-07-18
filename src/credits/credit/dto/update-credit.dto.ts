@@ -47,11 +47,11 @@ export class UpdateCreditDto {
     @IsOptional()
     observation?:string;
 
-    @IsOptional()
-    aval?: UpdateAvalDto
+    @IsOptional({each:true})
+    aval?: UpdateAvalDto[]
 
-    @IsOptional()
-    personalReference?: UpdatePersonalReferenceDto
+    @IsOptional({each:true})
+    personalReference?: UpdatePersonalReferenceDto[]
 
     @IsOptional()
     business?: UpdateBusinessDto
