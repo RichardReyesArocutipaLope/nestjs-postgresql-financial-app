@@ -49,7 +49,7 @@ export class Aval {
         () => Credit,
         (credit) => credit.aval,
     )
-    fk_credit: Credit
+    fk_credit: Credit | number
 
     //! auditoria
     

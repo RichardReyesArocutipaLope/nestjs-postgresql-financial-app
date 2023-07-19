@@ -105,6 +105,9 @@ export class CreditService {
           .orWhere("cast(:state as text) is null ", { state })
       }))
       .andWhere(new Brackets((qb2) => {
+        qb2.where("credit.is_active=:is_active", { is_active: true, })
+      }))
+      .andWhere(new Brackets((qb2) => {
         qb2.where("customer.dni=:dni", { dni: +search_value, })
           .orWhere("LOWER(customer.first_name) LIKE :client ", { client: `%${search_value.toLowerCase()}%` })
           .orWhere("LOWER(customer.last_name) LIKE :client ", { client: `%${search_value.toLowerCase()}%` })
@@ -162,7 +165,13 @@ export class CreditService {
       updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
     }
 
+    const auditCreate = {
+      user_create: [user.id, full_name, `${fk_employee.dni}`, `${fk_employee.first_name} ${fk_employee.last_name}`],
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
+
     const { aval = [], personalReference = [], customer, business, ...credit } = updateCreditDto
+    
     const updateCredit = await this.creditRepository.preload({ id: id, ...credit })
     if (!updateCredit) throw new NotFoundException(`Credit with id: ${id} not found`)
 
@@ -177,6 +186,9 @@ export class CreditService {
           updateAval.user_update = audit.user_update;
           updateAval.updated_at = audit.updated_at;
           await this.avalRepository.save(updateAval)
+        } else if (item.dni) {
+          let newAval = this.avalRepository.create({ ...item, fk_credit: updateCredit.id, ...auditCreate })
+          await this.avalRepository.save(newAval)
         }
       }
 
@@ -186,8 +198,12 @@ export class CreditService {
           updateReference.user_update = audit.user_update;
           updateReference.updated_at = audit.updated_at;
           await this.personalReferenceRepository.save(updateReference)
+        } else if (item.dni) {
+          let newPersonalReference = this.personalReferenceRepository.create({ ...item, fk_credit: updateCredit.id, ...auditCreate })
+          await this.personalReferenceRepository.save(newPersonalReference)
         }
       }
+
 
       if (customer.id) {
         const updateCustomer = await this.customerRepository.preload({ ...customer })
@@ -249,7 +265,10 @@ export class CreditService {
     approveCredit.updated_at = moment().format('YYYY-MM-DD HH:mm:ss');
     await this.creditRepository.save(approveCredit)
 
-    return approveCredit
+    const getCredit = await this.findOne(approveCredit.id)
+    return {
+      credit: getCredit,
+    }
   }
 
   async disburse(id: number, user: User) {
@@ -268,7 +287,10 @@ export class CreditService {
 
     await this.creditRepository.save(disburseCredit)
 
-    return disburseCredit
+    const getCredit = await this.findOne(disburseCredit.id)
+    return {
+      credit: getCredit,
+    }
   }
 
 

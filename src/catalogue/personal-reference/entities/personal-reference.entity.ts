@@ -57,7 +57,7 @@ export class PersonalReference {
         () => Credit,
         (credit) => credit.personalReference,
     )
-    fk_credit: Credit
+    fk_credit: Credit | number
 
     //! auditoria
 
