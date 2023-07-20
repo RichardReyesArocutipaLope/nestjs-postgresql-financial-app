@@ -46,6 +46,12 @@ export class UsersController {
     }
   }
 
+  @Get('check-status')
+  @Auth()
+  checkAuthStatus(@GetUser() user: User) {
+    return this.usersService.checkAuthStatus(user);
+  }
+
   @Get('private2')
   @RolProtected(ValidRoles.administrador, ValidRoles.analista)
   @UseGuards(AuthGuard(), UserRoleGuard)

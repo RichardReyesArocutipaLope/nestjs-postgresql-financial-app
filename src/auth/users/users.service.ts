@@ -68,6 +68,15 @@ export class UsersService {
 
   }
 
+
+  async checkAuthStatus(user: User){
+    return {
+      user,
+      token: this.getJwtToken({ id: user.id })
+    };
+  }
+
+
   findAll() {
     return `This action returns all users`;
   }
