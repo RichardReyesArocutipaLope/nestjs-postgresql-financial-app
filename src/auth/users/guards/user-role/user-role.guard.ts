@@ -25,6 +25,6 @@ export class UserRoleGuard implements CanActivate {
     if (!user) throw new BadRequestException('User not found')
     if (validRoles.includes(user.fk_role.name)) return true
 
-    throw new ForbiddenException(`User ${user.full_name} need a valid role: [${validRoles}]`)
+    throw new ForbiddenException(`Se requiere un rol válido: [${validRoles}]`)
   }
 }

@@ -39,6 +39,7 @@ export class User {
     @ManyToOne(
         () => Role,
         (role) => role.user,
+        { eager: true }
     )
     fk_role: Role | number
 
