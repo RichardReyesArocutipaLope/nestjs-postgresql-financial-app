@@ -4,8 +4,6 @@
 
 # APP FINANCIERA
 
-pasos 
-
 ### 1. Clonar proyecto
 ```yarn install```
 
@@ -14,17 +12,14 @@ pasos
 ### 3. Cambiar las variables de entorno 
 
 ### 4. Levantar la base de datos
-
 ```docker-compose up -d```
 
-### 5. Levantar:  ```yarn start:dev```
+### 5. Levantar:  
+```yarn start:dev```
 
 
 
-
-
-
-## INSTALACCIONES NECESARIAS
+<!-- ## INSTALACCIONES NECESARIAS
 
 ### variables de entorno
 yarn add @nestjs/config
@@ -39,4 +34,4 @@ yarn add -D @types/bcrypt
 ## passport 
  yarn add @nestjs/passport passport
  yarn add @nestjs/jwt passport-jwt
- yarn add -D @types/passport-jwt
+ yarn add -D @types/passport-jwt -->
